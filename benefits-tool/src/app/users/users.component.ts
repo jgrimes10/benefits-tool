@@ -3,6 +3,9 @@ import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@a
 
 import { CreateUserComponent } from './create-user/create-user.component';
 
+import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/models/user.model';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -10,12 +13,21 @@ import { CreateUserComponent } from './create-user/create-user.component';
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns = ['firstName', 'lastName', 'email', 'department', 'position'];
-  dataSource = new MatTableDataSource<TestUser>(TEST_USER_DATA);
+  displayedColumns = ['firstName', 'lastName', 'email', 'isAdmin', 'position'];
+  dataSource;
 
-  constructor(public dialog: MatDialog) { }
+  users: User[];
+
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+      this.dataSource = new MatTableDataSource<User>(users);
+    });
   }
 
   openCreateUserModal() {
@@ -27,16 +39,3 @@ export class UsersComponent implements OnInit {
   }
 
 }
-
-export interface TestUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  department: string;
-  position: string;
-}
-
-const TEST_USER_DATA: TestUser[] = [
-  {firstName: 'Test', lastName: 'Test1', email: 'test1@test.com', department: 'Engineering', position: 'ASE'},
-  {firstName: 'Test', lastName: 'Test2', email: 'test2@test.com', department: 'Sales', position: 'B2B'}
-];
