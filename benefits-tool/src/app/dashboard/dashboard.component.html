@@ -1,5 +1,5 @@
 <h1>Your Benefits Breakdown</h1>
-<div *ngIf="!compare">
+<div class="graph-container" *ngIf="!compare">
   <nvd3 [ngClass]="{'hidden': pieData.length == 0}" [options]="pieOptions" [data]="pieData"></nvd3>
 </div>
 <div *ngIf="compare">
