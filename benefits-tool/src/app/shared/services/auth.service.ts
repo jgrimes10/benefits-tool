@@ -49,8 +49,10 @@ export class AuthService {
     this.users$ = this.db.list('users');
     this.users$.subscribe(users => {
       const authenticatedUser = users.filter(user => user.email === this.userEmail)[0];
+      console.log(authenticatedUser);
       if (!authenticatedUser) {
         const newUser = new User(this.userEmail, false);
+        console.log(newUser);
         this.users$.push(newUser);
       }
       this.currentUser = authenticatedUser;
