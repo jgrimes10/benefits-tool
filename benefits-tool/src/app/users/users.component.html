@@ -1,3 +1,41 @@
-<p>
-  users works!
-</p>
+<button mat-raised-button class="new-user-button" color="primary">
+  <mat-icon>person</mat-icon>
+  New User
+</button>
+
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+      </ng-container>
+
+      <!-- Email Column -->
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+      </ng-container>
+
+      <!-- Department Column -->
+    <ng-container matColumnDef="department">
+        <mat-header-cell *matHeaderCellDef>Department</mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.department}} </mat-cell>
+      </ng-container>
+
+      <!-- Position Column -->
+    <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef>Position</mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.position}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
