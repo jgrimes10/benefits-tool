@@ -1,5 +1,11 @@
 <mat-sidenav-container>
-  <mat-sidenav role="navigation" fixedInViewport mode="side" opened="true">Start</mat-sidenav>
+  <mat-sidenav role="navigation" fixedInViewport mode="side" opened="true">
+    <ul class="menu">
+      <li><a routerLink="/">Dashboard</a></li>
+      <li><a routerLink="/users">Users</a></li>
+      <li><a routerLink="/login">Login</a></li>
+    </ul>
+  </mat-sidenav>
   <mat-sidenav-content role="main">
     <div class="container">
       <router-outlet></router-outlet>
