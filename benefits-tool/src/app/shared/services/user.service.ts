@@ -25,6 +25,12 @@ export class UserService {
     return this.users$.map<User[], User[]>(users => users);
   }
 
+  getUser(userId): Observable<User[]> {
+    return this.users$.map<User[], User[]>(users =>
+      users.filter(user => user.$key === userId)
+    );
+  }
+
   createUser(email, isAdmin, firstName, lastName, position, salary, bonus,
     _401k, medical, dental, hsa, pto, numberOfPtoDaysTaken, tuition): void {
     // use model to instantiate new user with data from create user modal
