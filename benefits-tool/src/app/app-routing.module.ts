@@ -19,7 +19,7 @@ const routes: Routes = [
         {
           path: 'users',
           loadChildren: 'app/users/users.module#UsersModule'
-        },
+        }
       ]
     }
   ];
