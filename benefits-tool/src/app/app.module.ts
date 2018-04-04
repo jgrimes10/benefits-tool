@@ -13,6 +13,7 @@ import { CustomMaterialModule } from './shared/custom-material-module.module';
 import { environment } from '../environments/environment';
 import { AuthService } from '../app/shared/services/auth.service';
 import { AuthGuard } from '../app/shared/guards/auth.guard';
+import { UserService } from '../app/shared/services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthGuard } from '../app/shared/guards/auth.guard';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
