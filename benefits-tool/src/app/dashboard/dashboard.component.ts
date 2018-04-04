@@ -60,6 +60,7 @@ export class DashboardComponent implements OnInit {
       chart: {
         type: 'pieChart',
         height: 500,
+        width: 800,
         x: function(d) { return d.key; },
         y: function(d) { return d.y; },
         showLabels: true,
