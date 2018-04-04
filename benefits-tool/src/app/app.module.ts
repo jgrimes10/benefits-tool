@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { CustomMaterialModule } from './shared/custom-material-module.module';
 import { environment } from '../environments/environment';
 import { AuthService } from '../app/shared/services/auth.service';
+import { AuthGuard } from '../app/shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthService } from '../app/shared/services/auth.service';
     AngularFireAuthModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
