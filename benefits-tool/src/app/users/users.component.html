@@ -23,10 +23,10 @@
         <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
       </ng-container>
 
-      <!-- Department Column -->
-    <ng-container matColumnDef="department">
-        <mat-header-cell *matHeaderCellDef>Department</mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.department}} </mat-cell>
+      <!-- isAdmin Column -->
+    <ng-container matColumnDef="isAdmin">
+        <mat-header-cell *matHeaderCellDef>Admin</mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.isAdmin}} </mat-cell>
       </ng-container>
 
       <!-- Position Column -->
