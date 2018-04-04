@@ -1,7 +1,8 @@
-<div>main works!</div>
-
-<main>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</main>
+<mat-sidenav-container>
+  <mat-sidenav role="navigation" fixedInViewport mode="side" opened="true">Start</mat-sidenav>
+  <mat-sidenav-content role="main">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
