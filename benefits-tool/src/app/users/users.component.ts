@@ -11,7 +11,7 @@ import { User } from '../shared/models/user.model';
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns = ['firstName', 'lastName', 'email', 'isAdmin', 'position'];
+  displayedColumns = ['firstName', 'lastName', 'email', 'isAdmin', 'position', 'edit'];
   dataSource;
 
   users: User[];
