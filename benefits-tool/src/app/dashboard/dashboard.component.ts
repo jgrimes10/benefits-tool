@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NvD3Component } from 'ng2-nvd3';
-import { SeriesModel } from './series.model';
+// import { SeriesModel } from './series.model';
 
 import 'd3';
 import 'nvd3';
@@ -17,8 +17,8 @@ export class DashboardComponent implements OnInit {
   @ViewChild('nvd3') nvd3;
   compareBenefits = false;
   pieOptions: Object;
+  barOptions: Object;
   pieData: Array<any> = [
-
     {
       key: 'Salary',
       y: 20000
@@ -52,37 +52,62 @@ export class DashboardComponent implements OnInit {
       y: 2000
     }
   ];
-  barOptions: Object;
-  barData: Array<SeriesModel>;
-  benefitsData: SeriesModel;
-  comparisonBenefits: SeriesModel;
+  barData: [
+    {
+      'key': 'Salary',
+      'color': '#d62728',
+      'values': [
+        {
+          'label': 'Relias' ,
+          'value': 20000
+        } ,
+        {
+          'label': 'Company 1' ,
+          'value': 15000
+        } ,
+        {
+          'label': 'Company 2' ,
+          'value': 17500
+        } ,
+        {
+          'label': 'Company 3' ,
+          'value': 22000
+        }
+      ]
+    },
+    {
+      'key': 'Medical',
+      'color': '#1f77b4',
+      'values': [
+        {
+          'label': 'Relias' ,
+          'value': 20000
+        } ,
+        {
+          'label': 'Company 1' ,
+          'value': 15000
+        } ,
+        {
+          'label': 'Company 2' ,
+          'value': 17500
+        } ,
+        {
+          'label': 'Company 3' ,
+          'value': 22000
+        }
+      ]
+    }
+  ];
 
   constructor() {
-    this.benefitsData = new SeriesModel();
-    this.comparisonBenefits = new SeriesModel();
-    this.barData = new Array();
   }
 
   ngOnInit() {
-    this.barData = [];
-    this.benefitsData.key = 'CurrentBenefits';
-    this.benefitsData.values = [
-      {
-        key: 'something',
-        y: 20000
-      },
-      {
-        key: 'something',
-        y: 100
-      }
-    ];
-    console.log(this.benefitsData);
-
     this.pieOptions = {
       chart: {
         type: 'pieChart',
         height: 500,
-        width: 800,
+        width: 700,
         x: function(d) { return d.key; },
         y: function(d) { return d.y; },
         showLabels: true,
@@ -102,103 +127,32 @@ export class DashboardComponent implements OnInit {
     this.barOptions = {
       chart: {
         type: 'multiBarHorizontalChart',
-        height: 500,
+        height: 450,
         width: 800,
-        margin : {
-          top: 50,
-          right: 50,
-          bottom: 50,
-          left: 500
-        },
-        showLegend: false,
-        clipEdge: true,
-        staggerLabels: true,
-        dispatch: {
-          elementClick: function(e) { console.log('click'); }
-        },
-        yDomain: [0, 100],
         x: function(d) { return d.label; },
         y: function(d) { return d.value; },
-        showControls: false,
+        showControls: true,
         showValues: true,
-        // valueFormat: d3.format('d'),
         duration: 500,
-        barColor: function (d, i) {
-          if (d.key === 'CurrentBenefits') {
-            if (d.key === 'Salary') {
-              return '#5FAB44';
-            }
-            if (d.key === 'Salary') {
-              return '#F1AC00';
-            }
-            if (d.key === 'Bonus') {
-              return '#00A7A6';
-            }
-            if (d.key === '401K') {
-              return '#CC0000';
-            }
-            if (d.key === 'Medical') {
-              return '#1B7E7D';
-            }
-            if (d.key === 'Dental') {
-              return '#2A8EFF';
-            }
-            if (d.key === 'HSA') {
-              return '#6F84FF';
-            }
-            if (d.key === 'PTO') {
-              return '#A54BFF';
-            }
-            if (d.key === 'Tuition') {
-              return '#FF5F49';
-            }
-          } else {
-            return '#808080';
-          }
-      },
-        // groupSpacing: .5, // thin and thick the bar
-        // xAxis: {
-        //   axisLabel: 'Benefit Cost Amount',
-        //   axisLabelDistance: 420, // move axisLabel position
-        //   rotateLabel: 60,
-        //   groupSpacing: 0.2
-        // },
+        xAxis: {
+          showMaxMin: false
+        },
         yAxis: {
-          axisLabel: 'Benefit Cost Amount ($)',
-          tickValues: [250, 500, 750, 1000],
-          axisLabelDistance: 10, // move axisLabel position
+          axisLabel: 'Values',
           tickFormat: function(d) {
-            return d3.format('f')(d); // d3.format(',.2f')(d)
+            return d3.format(',.2f')(d);
           }
         }
       }
     };
-
-    this.barData.push(this.benefitsData);
-
-    this.nvd3.chart.update();
   }
 
   pieView(): void {
     this.compareBenefits = false;
   }
 
-  compare(): void {
+  compareView(): void {
     this.compareBenefits = true;
-    this.comparisonBenefits.key = 'CompareBenefits';
-    this.comparisonBenefits.values = [
-      {
-        key: 'something',
-        y: 10000
-      },
-      {
-        key: 'something',
-        y: 10000
-      }
-    ];
-    console.log(this.comparisonBenefits);
-
-    this.nvd3.chart.update();
   }
 
 
