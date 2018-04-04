@@ -11,6 +11,8 @@ import { ErrorStateMatcher } from '@angular/material';
 })
 export class LoginComponent {
 
+  hide = true;
+
   constructor(
     private authService: AuthService,
     private ar: ActivatedRoute
