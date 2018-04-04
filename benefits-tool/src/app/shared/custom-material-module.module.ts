@@ -6,7 +6,8 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCardModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,8 @@ import { NgModule } from '@angular/core';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   exports: [
     MatButtonModule,
@@ -29,7 +31,8 @@ import { NgModule } from '@angular/core';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
-  ],
+    MatSelectModule,
+    MatCardModule
+  ]
 })
 export class CustomMaterialModule { }
