@@ -1,17 +1,13 @@
 <h1>Your Benefits Breakdown</h1>
 <div>
   <button type="button" class="btn btn-sm btn-filter button-primary button" id="Pie" (click)="pieView($event)" i18n>Pie View</button>
-</div>
-<div>
-  <button type="button" class="btn btn-sm btn-filter button-primary button" id="Compare" (click)="compare($event)" i18n>Compare</button>
+  <button type="button" class="btn btn-sm btn-filter button-primary button" id="Compare" (click)="compareView($event)" i18n>Compare</button>
 </div>
 <div class="graph-container">
   <div *ngIf="!compareBenefits">
     <nvd3 [options]="pieOptions" [data]="pieData"></nvd3>
   </div>
   <div *ngIf="compareBenefits">
-    <nvd3 #nvd3 class="nvd3-chart" #nvd3Chart [options]="barOptions" [data]="barData"></nvd3>
+    <nvd3 [options]="barOptions" [data]="barData"></nvd3>
   </div>
 </div>
-
-<!-- [ngClass]="{'hidden': barData.length == 0}"  -->
