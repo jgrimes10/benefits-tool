@@ -15,7 +15,6 @@ export class User {
     this.dental = dental || null;
     this.hsa = hsa || null;
     this.pto = pto || null;
-    this.numberOfPtoDaysTaken = numberOfPtoDaysTaken || null;
     this.tuition = tuition || null;
   }
 
@@ -32,6 +31,5 @@ export class User {
   dental: number;
   hsa: number;
   pto: number;
-  numberOfPtoDaysTaken: number;
   tuition: number;
 }

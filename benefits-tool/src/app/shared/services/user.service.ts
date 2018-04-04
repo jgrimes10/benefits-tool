@@ -32,17 +32,17 @@ export class UserService {
   }
 
   createUser(email, isAdmin, firstName, lastName, position, salary, bonus,
-    _401k, medical, dental, hsa, pto, numberOfPtoDaysTaken, tuition): void {
+    _401k, medical, dental, hsa, pto, tuition): void {
     // use model to instantiate new user with data from create user modal
     // push the instantiation to firebase list observable
     const newUser = new User(email, isAdmin, firstName, lastName, position, salary, bonus,
-      _401k, medical, dental, hsa, pto, numberOfPtoDaysTaken, tuition);
+      _401k, medical, dental, hsa, pto, tuition);
       this.users$.push(newUser);
   }
 
   // user will not be able to update their email
   updateUser(userId, isAdmin, firstName, lastName, position, salary, bonus,
-    _401k, medical, dental, hsa, pto, numberOfPtoDaysTaken, tuition) {
+    _401k, medical, dental, hsa, pto, tuition) {
     // get user to update using user's $key
     const user$ = this.db.object(`users/${userId}`);
     user$.subscribe(user => {
@@ -58,7 +58,6 @@ export class UserService {
       userToUpdate.dental = dental;
       userToUpdate.hsa = hsa;
       userToUpdate.pto = pto;
-      userToUpdate.numberOfPtoDaysTaken = numberOfPtoDaysTaken;
       userToUpdate.tuition = tuition;
       user$.set(userToUpdate);
       this.router.navigate(['/users']);
