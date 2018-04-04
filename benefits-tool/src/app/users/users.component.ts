@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @Component({
   selector: 'app-users',
@@ -11,9 +13,17 @@ export class UsersComponent implements OnInit {
   displayedColumns = ['firstName', 'lastName', 'email', 'department', 'position'];
   dataSource = new MatTableDataSource<TestUser>(TEST_USER_DATA);
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openCreateUserModal() {
+    const dialogRef = this.dialog.open(CreateUserComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
