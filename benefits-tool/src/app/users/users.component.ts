@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-
-import { CreateUserComponent } from './create-user/create-user.component';
+import { MatTableDataSource } from '@angular/material';
 
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user.model';
@@ -14,13 +12,12 @@ import { User } from '../shared/models/user.model';
 export class UsersComponent implements OnInit {
 
   displayedColumns = ['firstName', 'lastName', 'email', 'isAdmin', 'position', 'edit'];
-  dataSource;
+  dataSource: MatTableDataSource<User>;
 
   users: User[];
 
   constructor(
-    private userService: UserService,
-    public dialog: MatDialog
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -37,5 +34,4 @@ export class UsersComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
 }
