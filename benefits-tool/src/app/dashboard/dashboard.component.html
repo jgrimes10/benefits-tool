@@ -9,7 +9,7 @@
   <div *ngIf="!compareBenefits">
     <nvd3 [options]="pieOptions" [data]="pieData"></nvd3>
   </div>
-  <div *ngIf="compare">
+  <div *ngIf="compareBenefits">
     <nvd3 #nvd3 class="nvd3-chart" #nvd3Chart [options]="barOptions" [data]="barData"></nvd3>
   </div>
 </div>
