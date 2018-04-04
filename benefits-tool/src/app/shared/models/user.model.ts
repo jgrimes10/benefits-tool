@@ -18,6 +18,5 @@ export class User {
   dental: number;
   hsa: number;
   pto: number;
-  numberOfPtoDaysTaken: number;
   tuition: number;
 }
