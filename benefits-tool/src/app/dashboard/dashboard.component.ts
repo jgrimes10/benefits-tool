@@ -49,7 +49,10 @@ export class DashboardComponent implements OnInit {
       y: 2000
     }
   ];
+  barOptions: Object;
+  barData: Array<any> = [
 
+  ];
   constructor() { }
 
   ngOnInit() {

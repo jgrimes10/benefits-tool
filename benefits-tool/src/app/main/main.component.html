@@ -1,9 +1,8 @@
 <mat-sidenav-container>
-  <mat-sidenav>Start</mat-sidenav>
-  <mat-sidenav-content>Main</mat-sidenav-content>
+  <mat-sidenav role="navigation" fixedInViewport mode="side" opened="true">Start</mat-sidenav>
+  <mat-sidenav-content role="main">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
-<main>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</main>
