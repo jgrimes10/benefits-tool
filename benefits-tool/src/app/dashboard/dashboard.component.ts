@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NvD3Component } from 'ng2-nvd3';
 import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { SeriesModel } from './series.model';
-import { UserService } from '../shared/services/user.service';
+import { OrganizationService } from '../shared/services/organization.service';
+import { CompetitorOrganization } from '../shared/models/organization.model';
 import { AuthService } from '../shared/services/auth.service';
 import { User } from '../shared/models/user.model';
 
@@ -25,15 +26,19 @@ export class DashboardComponent implements OnInit {
   pieData: Array<any> = [];
   barData: Array<SeriesModel>;
   user: User;
+  competitorOrgs: CompetitorOrganization[];
   dataSource: MatTableDataSource<User>;
 
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private orgService: OrganizationService, private authService: AuthService) {
     this.barData = new Array();
   }
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = user[0];
+    });
+    this.orgService.getCompetitorOrganizations().subscribe(orgs => {
+      this.competitorOrgs = orgs;
     });
 
     this.pieOptions = {
@@ -62,20 +67,20 @@ export class DashboardComponent implements OnInit {
       chart: {
         type: 'multiBarHorizontalChart',
         height: 800,
-        width: 800,
-        margin: {'left': 100},
+        width: 1000,
+        margin: {'left': 75},
         x: function(d) { return d.label; },
         y: function(d) { return d.value; },
         showControls: false,
         showValues: true,
         duration: 500,
         xAxis: {
-          showMaxMin: false
+          showMaxMin: true
         },
         yAxis: {
-          axisLabel: 'Values',
+          axisLabel: 'Amount ($)',
           tickFormat: function(d) {
-            return d3.format(',.2f')(d);
+            return d3.format(',')(d);
           }
         }
       }
@@ -96,7 +101,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         key: 'Medical',
-        y: this.user !== undefined ? this.user.medical : 474.24
+        y: this.user !== undefined ? this.user.medical : 475
       },
       {
         key: 'Dental',
@@ -112,7 +117,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         key: 'PTO',
-        y: this.user !== undefined ? this.user.tuition : 7000
+        y: this.user !== undefined ? this.user.pto : 7000
       },
       {
         key: 'Tuition',
@@ -164,32 +169,32 @@ export class DashboardComponent implements OnInit {
         ]
       },
       {
-        'key': 'Company 2',
+        'key': this.competitorOrgs !== undefined ? this.competitorOrgs[0].name : 'Competitor #2',
         'color': '#f1ac00',
         'values': [
           {
             'label': 'Salary',
-            'value': 90000
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgSalary : 90000
           },
           {
             'label': 'Bonus',
-            'value': 7500
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgBonus : 7500
           },
           {
             'label': '401k',
-            'value': 7000
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avg401k : 4200
           },
           {
             'label': 'Medical',
-            'value': 400
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgMedical : 400
           },
           {
             'label': 'Dental',
-            'value': 75
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgDental : 75
           },
           {
             'label': 'Vision',
-            'value': 0
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgVision : 0
           },
           {
             'label': 'HSA',
@@ -197,11 +202,53 @@ export class DashboardComponent implements OnInit {
           },
           {
             'label': 'PTO',
-            'value': 3500
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgPTO : 3200
           },
           {
             'label': 'Tuition',
-            'value': 0
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgTuition : 0
+          }
+        ]
+      },
+      {
+        'key': this.competitorOrgs !== undefined ? this.competitorOrgs[1].name : 'Competitor #3',
+        'color': '#166dab',
+        'values': [
+          {
+            'label': 'Salary',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgSalary : 92000
+          },
+          {
+            'label': 'Bonus',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgBonus : 5000
+          },
+          {
+            'label': '401k',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avg401k : 2000
+          },
+          {
+            'label': 'Medical',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgMedical : 600
+          },
+          {
+            'label': 'Dental',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgDental : 0
+          },
+          {
+            'label': 'Vision',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgVision : 100
+          },
+          {
+            'label': 'HSA',
+            'value': 1000
+          },
+          {
+            'label': 'PTO',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgPTO : 4000
+          },
+          {
+            'label': 'Tuition',
+            'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgTuition : 0
           }
         ]
       }
