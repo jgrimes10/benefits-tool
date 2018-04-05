@@ -31,6 +31,7 @@ export class User {
   _401k: number;
   medical: number;
   dental: number;
+  vision: number;
   hsa: number;
   pto: number;
   tuition: number;
