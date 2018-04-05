@@ -10,7 +10,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav fixedInViewport fixedTopGap="30" #sidenav [(opened)]="opened" role="navigation" mode="side">
+  <mat-sidenav fixedInViewport #sidenav [(opened)]="opened" role="navigation" mode="side">
     <ul class="menu">
       <li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
       <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
