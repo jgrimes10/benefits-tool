@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
@@ -15,6 +16,7 @@ export class UserService {
   private users$: FirebaseListObservable<User[]>;
 
   constructor(
+    private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     private router: Router
   ) {
@@ -42,6 +44,7 @@ export class UserService {
       user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
       user.vision = benefits.vision;
       this.users$.push(user);
+      this.afAuth.auth.createUserWithEmailAndPassword(user.email, 'training');
     });
   }
 
