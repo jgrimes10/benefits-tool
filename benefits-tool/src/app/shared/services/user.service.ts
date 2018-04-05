@@ -48,7 +48,7 @@ export class UserService {
 
   // user will not be able to update their email
   updateUser(userId, isAdmin, firstName, lastName, position, salary, bonus,
-    _401k, medical, dental, hsa, pto, tuition) {
+    _401k, medical, dental, vision, hsa, pto, tuition) {
     // get user to update using user's $key
     const user$ = this.db.object(`users/${userId}`);
     user$.subscribe(user => {
@@ -65,6 +65,7 @@ export class UserService {
       userToUpdate.hsa = hsa;
       userToUpdate.pto = pto;
       userToUpdate.tuition = tuition;
+      userToUpdate.vision = vision;
       user$.set(userToUpdate);
       this.router.navigate(['/users']);
     });
