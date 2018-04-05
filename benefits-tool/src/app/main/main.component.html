@@ -1,24 +1,24 @@
-<mat-toolbar class="d-flex flex-row justify-content-between">
+<mat-toolbar layout="column" class="d-flex flex-row justify-content-between">
   <div class="left-header d-flex">
     <mat-icon (click)="sidenav.toggle()" color="primary">menu</mat-icon>
     <h1>Benefits App</h1>
   </div>
-  <div class="right-header">
-    <span>{{user?.firstName}}</span>
-    <mat-icon color="secondary" routerLink="/login" (click)="logout()">exit_to_app</mat-icon>
+  <div class="right-header d-flex align-content-center">
+    <span class="align-self-center">{{user?.firstName}} {{user?.lastName}}</span>
+    <mat-icon color="primary" routerLink="/login" (click)="logout()">exit_to_app</mat-icon>
   </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav fixedTopGap="64" #sidenav [(opened)]="opened" role="navigation" mode="side">
     <ul class="menu">
-      <li><a routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
-      <li><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
-      <li><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
-      <li><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Competitor Organizations</a></li>
+      <li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
+      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
+      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
+      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Competitor Organizations</a></li>
     </ul>
   </mat-sidenav>
-  <mat-sidenav-content class="d-flex" role="main">
+  <mat-sidenav-content role="main">
     <div class="container">
       <router-outlet></router-outlet>
     </div>
