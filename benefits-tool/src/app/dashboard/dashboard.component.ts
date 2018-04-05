@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NvD3Component } from 'ng2-nvd3';
-// import { SeriesModel } from './series.model';
+import { SeriesModel } from './series.model';
 
 import 'd3';
 import 'nvd3';
@@ -52,54 +52,10 @@ export class DashboardComponent implements OnInit {
       y: 2000
     }
   ];
-  barData: [
-    {
-      'key': 'Salary',
-      'color': '#d62728',
-      'values': [
-        {
-          'label': 'Relias' ,
-          'value': 20000
-        } ,
-        {
-          'label': 'Company 1' ,
-          'value': 15000
-        } ,
-        {
-          'label': 'Company 2' ,
-          'value': 17500
-        } ,
-        {
-          'label': 'Company 3' ,
-          'value': 22000
-        }
-      ]
-    },
-    {
-      'key': 'Medical',
-      'color': '#1f77b4',
-      'values': [
-        {
-          'label': 'Relias' ,
-          'value': 20000
-        } ,
-        {
-          'label': 'Company 1' ,
-          'value': 15000
-        } ,
-        {
-          'label': 'Company 2' ,
-          'value': 17500
-        } ,
-        {
-          'label': 'Company 3' ,
-          'value': 22000
-        }
-      ]
-    }
-  ];
+  barData: Array<SeriesModel>;
 
   constructor() {
+    this.barData = new Array();
   }
 
   ngOnInit() {
@@ -124,14 +80,16 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+
     this.barOptions = {
       chart: {
         type: 'multiBarHorizontalChart',
         height: 450,
         width: 800,
+        margin: {'left': 100},
         x: function(d) { return d.label; },
         y: function(d) { return d.value; },
-        showControls: true,
+        showControls: false,
         showValues: true,
         duration: 500,
         xAxis: {
@@ -145,6 +103,53 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+
+    this.barData = [
+      {
+        'key': 'Relias',
+        'color': '#00a7a6',
+        'values': [
+          {
+            'label': 'Salary' ,
+            'value': 20000
+          } ,
+          {
+            'label': 'Medical' ,
+            'value': 5000
+          } ,
+          {
+            'label': 'HSA' ,
+            'value': 2500
+          } ,
+          {
+            'label': 'PTO' ,
+            'value': 5000
+          }
+        ]
+      },
+      {
+        'key': 'Company 2',
+        'color': '#f1ac00',
+        'values': [
+          {
+            'label': 'Salary' ,
+            'value': 18000
+          } ,
+          {
+            'label': 'Medical' ,
+            'value': 3500
+          } ,
+          {
+            'label': 'HSA' ,
+            'value': 2100
+          } ,
+          {
+            'label': 'PTO' ,
+            'value': 800
+          }
+        ]
+      }
+    ];
   }
 
   pieView(): void {
@@ -154,6 +159,4 @@ export class DashboardComponent implements OnInit {
   compareView(): void {
     this.compareBenefits = true;
   }
-
-
 }
