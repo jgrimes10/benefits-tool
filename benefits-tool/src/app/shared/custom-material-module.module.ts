@@ -12,7 +12,8 @@ import {
   MatSliderModule,
   MatListModule,
   MatProgressSpinnerModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -31,7 +32,8 @@ import { NgModule } from '@angular/core';
     MatSliderModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -47,7 +49,8 @@ import { NgModule } from '@angular/core';
     MatSliderModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ]
 })
 export class CustomMaterialModule { }

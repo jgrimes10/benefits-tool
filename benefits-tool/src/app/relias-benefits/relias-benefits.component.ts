@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReliasBenefits } from '../shared/models/relias-benefits.model';
 import { OrganizationService } from '../shared/services/organization.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-relias-benefits',
@@ -14,7 +15,8 @@ export class ReliasBenefitsComponent implements OnInit {
   showSpinner = true;
 
   constructor(
-    private orgService: OrganizationService
+    private orgService: OrganizationService,
+    private snackbar: MatSnackBar
   ) { }
 
   disabled = true;
@@ -28,8 +30,13 @@ export class ReliasBenefitsComponent implements OnInit {
     });
   }
 
+  openSnackBar() {
+    this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
+  }
+
   onSave() {
     console.log('saved ' + this.myBenefits);
     this.orgService.updateReliasBenefits(this.myBenefits);
+    this.openSnackBar();
   }
 }
