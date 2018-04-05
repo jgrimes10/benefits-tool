@@ -27,33 +27,37 @@ export class CreateUserComponent implements OnInit {
   }
 
   buildForm() {
+    this.user = this.data || new User();
     this.userForm = this.formBuilder.group({
-      'firstName': ['', Validators.required],
-      'lastName': ['', Validators.required],
-      'email': ['', Validators.required],
-      'position': ['', Validators.required],
-      'department': ['', Validators.required],
-      'salary': ['', Validators.required],
-      'isAdmin': ['', Validators.required],
-      'medicalType': ['', Validators.required]
+      'firstName': [this.user.firstName, Validators.required],
+      'lastName': [this.user.lastName, Validators.required],
+      'email': [this.user.email, Validators.required],
+      'position': [this.user.position, Validators.required],
+      'department': [this.user.department, Validators.required],
+      'salary': [this.user.salary, Validators.required],
+      'isAdmin': [this.user.isAdmin, Validators.required],
+      'medicalType': [this.user.medicalType, Validators.required]
     });
   }
 
-
   createUser() {
     const form = this.userForm;
-    const user = new User(
-      form.controls.email.value,
-      form.controls.isAdmin.value,
-      form.controls.firstName.value,
-      form.controls.lastName.value,
-      form.controls.position.value,
-      form.controls.department.value,
-      form.controls.salary.value,
-      form.controls.medicalType.value
-    );
 
-    this.userService.createUser(user);
+    this.user.email = form.controls.email.value;
+    this.user.isAdmin = form.controls.isAdmin.value;
+    this.user.firstName = form.controls.firstName.value;
+    this.user.lastName = form.controls.lastName.value;
+    this.user.position = form.controls.position.value;
+    this.user.department = form.controls.department.value;
+    this.user.salary = form.controls.salary.value;
+    this.user.medicalType = form.controls.medicalType.value;
+
+    console.log(this.user);
+    if (this.user.$key) {
+      this.userService.createUser(this.user);
+    } else {
+      this.userService.updateUser(this.user);
+    }
     this.dialogRef.close();
   }
 }

@@ -50,8 +50,8 @@
   </div>
   <div class="d-flex justify-content-end btn-container">
     <button mat-raised-button color="primary">
-      <span *ngIf="true" (click)="createUser();">Create</span>
-      <span *ngIf="false">Update</span>
+      <span *ngIf="!user?.$key" (click)="createUser();">Create</span>
+      <span *ngIf="user?.$key" (click)="createUser();">Update</span>
     </button>
   </div>
 </div>

@@ -39,7 +39,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let user">
-        <button mat-icon-button>
+        <button (click)="openUpdateUserModal(user)" mat-icon-button>
             <mat-icon>edit</mat-icon>
         </button>
       </mat-cell>
