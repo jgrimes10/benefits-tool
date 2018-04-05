@@ -69,4 +69,23 @@ export class UserService {
       this.router.navigate(['/users']);
     });
   }
+
+  updateUsers(reliasBenefits: ReliasBenefits): void {
+    this.getUsers().subscribe(users => {
+      users.forEach(user => {
+        const user$ = this.db.object(`users/${user.$key}`);
+        user$.subscribe(userToUpdate => {
+          userToUpdate._401k = Number((userToUpdate.salary * (reliasBenefits._401k / 100)).toFixed(2));
+          userToUpdate.bonus = Number((userToUpdate.salary * (reliasBenefits.bonus / 100)).toFixed(2));
+          userToUpdate.dental = reliasBenefits.dental;
+          userToUpdate.hsa = reliasBenefits.HSA;
+          userToUpdate.medical = reliasBenefits.medical;
+          userToUpdate.tuition = reliasBenefits.tuition;
+          userToUpdate.pto = Number((userToUpdate.salary * (reliasBenefits.pto / 100)).toFixed(2));
+          userToUpdate.vision = reliasBenefits.vision;
+          user$.set(userToUpdate);
+        });
+      });
+    });
+  }
 }

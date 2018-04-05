@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 import { ReliasBenefits } from '../models/relias-benefits.model';
+import { UserService } from './user.service';
 
 @Injectable()
 export class OrganizationService {
@@ -11,7 +12,8 @@ export class OrganizationService {
   private reliasBenefits$: FirebaseObjectObservable<ReliasBenefits>;
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private userService: UserService
   ) {
     this.reliasBenefits$ = this.db.object('relias');
   }
@@ -22,5 +24,6 @@ export class OrganizationService {
 
   updateReliasBenefits(reliasBenefits: ReliasBenefits) {
     this.reliasBenefits$.set(reliasBenefits);
+    this.userService.updateUsers(reliasBenefits);
   }
 }
