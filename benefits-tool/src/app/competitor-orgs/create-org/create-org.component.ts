@@ -55,7 +55,11 @@ export class CreateOrgComponent implements OnInit {
       form.controls.avgPTO.value,
     );
 
-    this.orgService.insertCompetitorOrganization(org);
+    if (!org.$key) {
+      this.orgService.insertCompetitorOrganization(org);
+    } else {
+      this.orgService.updateCompetitorOrganization(org);
+    }
     this.diaglogRef.close();
   }
 

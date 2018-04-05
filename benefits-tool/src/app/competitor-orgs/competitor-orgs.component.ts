@@ -4,7 +4,6 @@ import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource } from '@a
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { OrganizationService } from '../shared/services/organization.service';
 import { CompetitorOrganization } from '../shared/models/organization.model';
-
 @Component({
   selector: 'app-competitor-orgs',
   templateUrl: './competitor-orgs.component.html',
@@ -31,6 +30,13 @@ export class CompetitorOrgsComponent implements OnInit {
 
   openCreateNewOrgModal() {
     const dialogRef = this.dialog.open(CreateOrgComponent, {
+      width: '40%'
+    });
+  }
+
+  openUpdateOrgModal(org) {
+    const dialogRef = this.dialog.open(CreateOrgComponent, {
+      data: org,
       width: '40%'
     });
   }
