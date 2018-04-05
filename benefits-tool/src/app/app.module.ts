@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from '../app/shared/services/auth.service';
 import { AuthGuard } from '../app/shared/guards/auth.guard';
 import { UserService } from '../app/shared/services/user.service';
+import { OrganizationService } from '../app/shared/services/organization.service';
 
 import 'd3';
 import 'nvd3';
@@ -39,7 +40,8 @@ import 'nvd3';
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    OrganizationService
   ],
   bootstrap: [AppComponent]
 })
