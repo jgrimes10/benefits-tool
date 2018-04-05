@@ -13,6 +13,12 @@
       <mat-cell *matCellDef="let org"> {{org.name}} </mat-cell>
     </ng-container>
 
+    <!-- Competitor Position Column -->
+    <ng-container matColumnDef="compPosition">
+      <mat-header-cell *matHeaderCellDef>Competitor Position</mat-header-cell>
+      <mat-cell *matCellDef="let org"> {{org.position}} </mat-cell>
+    </ng-container>
+
     <!-- Avg Salary Column -->
     <ng-container matColumnDef="avgSalary">
       <mat-header-cell *matHeaderCellDef>Average Salary</mat-header-cell>

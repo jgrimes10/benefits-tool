@@ -1,7 +1,8 @@
 export class CompetitorOrganization {
 
-  constructor(name, avgSalary?, avgBonus?, avg401k?, avgMedical?, avgDental?, avgVision?, avgTuition?, avgPTO?) {
+  constructor(name, position, avgSalary?, avgBonus?, avg401k?, avgMedical?, avgDental?, avgVision?, avgTuition?, avgPTO?) {
     this.name = name;
+    this.position = position;
     this.avgSalary = avgSalary || 0;
     this.avgBonus = avgBonus || 0;
     this.avg401k = avg401k || 0;
@@ -14,6 +15,7 @@ export class CompetitorOrganization {
 
   $key: string;
   name: string;
+  position: string;
   avgSalary: number;
   avgBonus: number;
   avg401k: number;

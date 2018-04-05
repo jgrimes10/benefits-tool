@@ -11,7 +11,7 @@ import { CompetitorOrganization } from '../shared/models/organization.model';
 })
 export class CompetitorOrgsComponent implements OnInit {
 
-  displayedColumns = ['orgName', 'avgSalary', 'avgBonus', 'avgMedical', 'edit'];
+  displayedColumns = ['orgName', 'compPosition', 'avgSalary', 'avgBonus', 'avgMedical', 'edit'];
   dataSource: MatTableDataSource<CompetitorOrganization>;
 
   orgs: CompetitorOrganization[];

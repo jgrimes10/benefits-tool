@@ -28,9 +28,10 @@ export class CreateOrgComponent implements OnInit {
   }
 
   buildForm() {
-    this.competitor = this.data || new CompetitorOrganization('');
+    this.competitor = this.data || new CompetitorOrganization('', '');
     this.orgForm = this.formBuilder.group({
       'orgName': [this.competitor.name, Validators.required],
+      'compPosition': [this.competitor.position, Validators.required],
       'avgSalary': [this.competitor.avgSalary],
       'avgBonus': [this.competitor.avgBonus],
       'avgPTO': [this.competitor.avgPTO],
@@ -48,6 +49,7 @@ export class CreateOrgComponent implements OnInit {
     const form = this.orgForm;
 
     this.competitor.name = form.controls.orgName.value;
+    this.competitor.position = form.controls.compPosition.value;
     this.competitor.avgSalary = form.controls.avgSalary.value;
     this.competitor.avgBonus = form.controls.avgBonus.value;
     this.competitor.avgPTO = form.controls.avgPTO.value;

@@ -49,7 +49,7 @@
     </mat-form-field>
   </div>
   <div class="d-flex justify-content-end btn-container">
-    <button mat-raised-button (click)="createUser();" color="primary">
+    <button mat-raised-button color="primary" (click)="createUser();">
       <span *ngIf="!user?.$key">Create</span>
       <span *ngIf="user?.$key">Update</span>
     </button>
