@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NvD3Component } from 'ng2-nvd3';
+import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { SeriesModel } from './series.model';
+import { UserService } from '../shared/services/user.service';
+import { AuthService } from '../shared/services/auth.service';
+import { User } from '../shared/models/user.model';
 
 import 'd3';
 import 'nvd3';
@@ -18,47 +22,19 @@ export class DashboardComponent implements OnInit {
   compareBenefits = false;
   pieOptions: Object;
   barOptions: Object;
-  pieData: Array<any> = [
-    {
-      key: 'Salary',
-      y: 20000
-    },
-    {
-      key: 'Bonus',
-      y: 1000
-    },
-    {
-      key: '401k',
-      y: 1000
-    },
-    {
-      key: 'Medical',
-      y: 3000
-    },
-    {
-      key: 'Dental',
-      y: 2000
-    },
-    {
-      key: 'HSA',
-      y: 1500
-    },
-    {
-      key: 'PTO',
-      y: 4000
-    },
-    {
-      key: 'Tuition',
-      y: 2000
-    }
-  ];
+  pieData: Array<any> = [];
   barData: Array<SeriesModel>;
+  user: User;
+  dataSource: MatTableDataSource<User>;
 
-  constructor() {
+  constructor(private userService: UserService, private authService: AuthService) {
     this.barData = new Array();
   }
 
   ngOnInit() {
+    this.user = this.authService.getCurrentUser();
+    console.log(this.user);
+
     this.pieOptions = {
       chart: {
         type: 'pieChart',
@@ -73,9 +49,9 @@ export class DashboardComponent implements OnInit {
         legend: {
           margin: {
             top: 5,
-            right: 35,
+            right: 0,
             bottom: 5,
-            left: 0
+            left: 10
           }
         }
       }
@@ -84,7 +60,7 @@ export class DashboardComponent implements OnInit {
     this.barOptions = {
       chart: {
         type: 'multiBarHorizontalChart',
-        height: 450,
+        height: 800,
         width: 800,
         margin: {'left': 100},
         x: function(d) { return d.label; },
@@ -104,26 +80,85 @@ export class DashboardComponent implements OnInit {
       }
     };
 
+    this.pieData = [
+      {
+        key: 'Salary',
+        y: this.user !== undefined ? this.user.salary : 100000
+      },
+      {
+        key: 'Bonus',
+        y: this.user !== undefined ? this.user.bonus : 10000
+      },
+      {
+        key: '401k',
+        y: this.user !== undefined ? this.user._401k : 6000
+      },
+      {
+        key: 'Medical',
+        y: this.user !== undefined ? this.user.medical : 474.24
+      },
+      {
+        key: 'Dental',
+        y: this.user !== undefined ? this.user.dental : 125
+      },
+      {
+        key: 'Vision',
+        y: this.user !== undefined ? this.user.vision : 125
+      },
+      {
+        key: 'HSA',
+        y: this.user !== undefined ? this.user.hsa : 500
+      },
+      {
+        key: 'PTO',
+        y: this.user !== undefined ? this.user.tuition : 7000
+      },
+      {
+        key: 'Tuition',
+        y: this.user !== undefined ? this.user.tuition : 4000
+      }
+    ];
+
     this.barData = [
       {
         'key': 'Relias',
         'color': '#00a7a6',
         'values': [
           {
-            'label': 'Salary' ,
-            'value': 20000
-          } ,
+            'label': 'Salary',
+            'value': this.user !== undefined ? this.user.salary : 100000
+          },
           {
-            'label': 'Medical' ,
-            'value': 5000
-          } ,
+            'label': 'Bonus',
+            'value': this.user !== undefined ? this.user.bonus : 10000
+          },
           {
-            'label': 'HSA' ,
-            'value': 2500
-          } ,
+            'label': '401k',
+            'value': this.user !== undefined ? this.user._401k : 6000
+          },
           {
-            'label': 'PTO' ,
-            'value': 5000
+            'label': 'Medical',
+            'value': this.user !== undefined ? this.user.medical : 474.24
+          },
+          {
+            'label': 'Dental',
+            'value': this.user !== undefined ? this.user.dental : 125
+          },
+          {
+            'label': 'Vision',
+            'value': this.user !== undefined ? this.user.vision : 125
+          },
+          {
+            'label': 'HSA',
+            'value': this.user !== undefined ? this.user.hsa : 500
+          },
+          {
+            'label': 'PTO',
+            'value': this.user !== undefined ? this.user.tuition : 7000
+          },
+          {
+            'label': 'Tuition',
+            'value': this.user !== undefined ? this.user.tuition : 4000
           }
         ]
       },
@@ -132,20 +167,40 @@ export class DashboardComponent implements OnInit {
         'color': '#f1ac00',
         'values': [
           {
-            'label': 'Salary' ,
-            'value': 18000
-          } ,
+            'label': 'Salary',
+            'value': 90000
+          },
           {
-            'label': 'Medical' ,
+            'label': 'Bonus',
+            'value': 7500
+          },
+          {
+            'label': '401k',
+            'value': 7000
+          },
+          {
+            'label': 'Medical',
+            'value': 400
+          },
+          {
+            'label': 'Dental',
+            'value': 75
+          },
+          {
+            'label': 'Vision',
+            'value': 0
+          },
+          {
+            'label': 'HSA',
+            'value': 500
+          },
+          {
+            'label': 'PTO',
             'value': 3500
-          } ,
+          },
           {
-            'label': 'HSA' ,
-            'value': 2100
-          } ,
-          {
-            'label': 'PTO' ,
-            'value': 800
+            'label': 'Tuition',
+            'value': 0
           }
         ]
       }

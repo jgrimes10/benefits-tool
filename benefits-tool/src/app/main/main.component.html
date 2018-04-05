@@ -1,18 +1,19 @@
+<mat-toolbar>
+  <mat-icon (click)="sidenav.toggle()" color="primary">menu</mat-icon>
+  <h1>Benefits App</h1>
+</mat-toolbar>
+
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [(opened)]="opened" role="navigation" fixedInViewport mode="side">
+  <mat-sidenav fixedTopGap="64" #sidenav [(opened)]="opened" role="navigation" mode="side">
     <ul class="menu">
-      <li><a routerLink="/">Dashboard</a></li>
-      <li><a routerLink="/relias-benefits">Relias Benefits</a></li>
-      <li><a routerLink="/users">Users</a></li>
-      <li><a routerLink="/competitor-orgs">Competitor Organizations</a></li>
-      <li><a routerLink="/login" (click)="logout()">Logout</a></li>
+      <li><a routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
+      <li><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
+      <li><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
+      <li><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Competitor Organizations</a></li>
+      <li><a routerLinkActive="nav-selected" routerLink="/login" (click)="logout()">Logout</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content class="d-flex" role="main">
-    <div (click)="sidenav.toggle()" class="d-flex flex-column justify-content-center collapsed-nav">
-        <mat-icon *ngIf="!opened">keyboard_arrow_right</mat-icon>
-        <mat-icon *ngIf="opened">keyboard_arrow_left</mat-icon>
-    </div>
     <div class="container">
       <router-outlet></router-outlet>
     </div>
