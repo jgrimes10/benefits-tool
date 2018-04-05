@@ -13,23 +13,23 @@
 
     <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+    </ng-container>
 
-      <!-- Email Column -->
+    <!-- Email Column -->
     <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
 
-      <!-- Position Column -->
+    <!-- Position Column -->
     <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef>Position</mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.position}} </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef>Position</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.position}} </mat-cell>
+    </ng-container>
 
-      <!-- Edit Button -->
+    <!-- Edit Button -->
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let user">
@@ -39,7 +39,7 @@
       </mat-cell>
     </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>

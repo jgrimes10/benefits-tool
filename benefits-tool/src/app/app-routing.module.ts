@@ -30,7 +30,7 @@ const routes: Routes = [
         },
         {
           path: 'competitor-orgs',
-          component: CompetitorOrgsComponent
+          loadChildren: 'app/competitor-orgs/competitor-orgs.module#CompetitorOrgsModule'
         }
       ]
     }
