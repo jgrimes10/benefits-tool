@@ -19,11 +19,9 @@ export class LoginComponent implements OnInit {
   ) { }
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  password = new FormControl('', [Validators.required]);
 
-  ngOnInit() {
-    document.body.classList.add('login-bg');
-  }
+  ngOnInit() { }
 
   getEmailError() {
     return this.email.hasError('required') ? 'You must enter a value' :
@@ -32,9 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   getPasswordError() {
-    return this.password.hasError('required') ? 'You must enter a value' :
-      this.password.hasError('minlength') ? 'Not a valid password; 6 characters minimum' :
-      '';
+    return this.password.hasError('required') ? 'You must enter a value' : '';
   }
 
   onSubmit(): void {

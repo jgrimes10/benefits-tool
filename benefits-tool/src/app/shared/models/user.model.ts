@@ -12,7 +12,7 @@ export class User {
   }
 
   $key: string;
-  isAdmin: boolean;
+  isAdmin: string;
   email: string;
   firstName: string;
   lastName: string;

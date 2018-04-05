@@ -38,4 +38,11 @@ export class UsersComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  openUpdateUserModal(user) {
+    const dialogRef = this.dialog.open(CreateUserComponent, {
+      data: user,
+      width: '40%'
+    });
+  }
 }

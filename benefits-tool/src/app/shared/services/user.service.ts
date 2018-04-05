@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
@@ -15,6 +16,7 @@ export class UserService {
   private users$: FirebaseListObservable<User[]>;
 
   constructor(
+    private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     private router: Router
   ) {
@@ -42,32 +44,15 @@ export class UserService {
       user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
       user.vision = benefits.vision;
       this.users$.push(user);
+      this.afAuth.auth.createUserWithEmailAndPassword(user.email, 'training');
     });
   }
 
   // user will not be able to update their email
-  updateUser(userId, isAdmin, firstName, lastName, position, salary, bonus,
-    _401k, medical, dental, vision, hsa, pto, tuition) {
+  updateUser(userObj) {
     // get user to update using user's $key
-    const user$ = this.db.object(`users/${userId}`);
-    user$.subscribe(user => {
-      const userToUpdate: User = user;
-      userToUpdate.isAdmin = isAdmin;
-      userToUpdate.firstName = firstName;
-      userToUpdate.lastName = lastName;
-      userToUpdate.position = position;
-      userToUpdate.salary = salary;
-      userToUpdate.bonus = bonus;
-      userToUpdate._401k = _401k;
-      userToUpdate.medical = medical;
-      userToUpdate.dental = dental;
-      userToUpdate.hsa = hsa;
-      userToUpdate.pto = pto;
-      userToUpdate.tuition = tuition;
-      userToUpdate.vision = vision;
-      user$.set(userToUpdate);
-      this.router.navigate(['/users']);
-    });
+    const user$ = this.db.object(`users/${userObj.$key}`);
+    user$.set(userObj);
   }
 
   updateUsers(reliasBenefits: ReliasBenefits): void {
