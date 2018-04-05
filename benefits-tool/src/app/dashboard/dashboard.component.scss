@@ -6,3 +6,16 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+.benefits-grid {
+    margin: 10px 0 50px 0;
+    [class^="col"]  {
+        height: 30px;
+    }
+    .header {
+        border-bottom: 2px solid black;
+    }
+    .alt-row {
+        background-color: rgb(212, 209, 209);
+    }
+}
