@@ -1,15 +1,15 @@
 <div class="modal-container">
   <mat-form-field>
-    <input matInput placeholder="First Name">
+    <input formControlName="firstName" matInput placeholder="First Name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Last Name">
+    <input formControlName="lastName" matInput placeholder="Last Name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Email">
+    <input formControlName="email" matInput placeholder="Email">
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Department">
+    <mat-select formControlName="department" placeholder="Department">
       <mat-option value="Sales">Sales</mat-option>
       <mat-option value="Engineering">Engineering</mat-option>
       <mat-option value="IT & Business Systems">IT & Business Systems</mat-option>
@@ -26,13 +26,15 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Position">
+    <input formControlName="position" matInput placeholder="Position">
   </mat-form-field>
   <mat-form-field class="short">
-    <input matInput placeholder="Salary">
+    <input formControlName="salary" matInput min="0" type="number" placeholder="Salary">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
   </mat-form-field>
   <mat-form-field class="short">
-    <mat-select placeholder="Is this user an admin?">
+    <mat-select formControlName="admin" placeholder="Is this user an admin?">
       <mat-option value="yes">Yes</mat-option>
       <mat-option value="no">No</mat-option>
     </mat-select>
