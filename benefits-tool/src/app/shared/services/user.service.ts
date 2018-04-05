@@ -41,6 +41,7 @@ export class UserService {
       user.medical = benefits.medical;
       user.tuition = benefits.tuition;
       user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
+      user.vision = benefits.vision;
       this.users$.push(user);
     });
   }
