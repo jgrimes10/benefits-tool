@@ -1,9 +1,9 @@
 <div class="modal-container">
   <div [formGroup]="orgForm">
-    <mat-form-field>
+    <mat-form-field class="w-75">
       <input formControlName="orgName" matInput placeholder="Organization Name">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="w-75 pr-2">
       <input formControlName="compPosition" matInput placeholder="Position">
     </mat-form-field>
     <mat-form-field>
@@ -50,8 +50,8 @@
       Cancel
     </button>
     <button mat-raised-button color="primary" (click)="onSave();">
-      <mat-icon *ngIf="competitor?.$key">save</mat-icon>
-      <mat-icon *ngIf="!competitor?.$key">add</mat-icon>
+      <mat-icon *ngIf="!competitor?.$key">save</mat-icon>
+      <mat-icon *ngIf="competitor?.$key">add</mat-icon>
       Save
     </button>
   </div>

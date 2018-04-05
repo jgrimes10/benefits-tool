@@ -33,10 +33,6 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       width: '40%'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   openUpdateUserModal(user) {
