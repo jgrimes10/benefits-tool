@@ -1,3 +1,50 @@
-<p>
-  create-org works!
-</p>
+<div class="modal-container">
+  <div [formGroup]="orgForm">
+    <mat-form-field>
+      <input formControlName="orgName" matInput placeholder="Organization Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgSalary" type="number" matInput placeholder="Average Salary">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgBonus" type="number" matInput placeholder="Average Bonus">
+      <span matSuffix>%</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgPTO" type="number" matInput placeholder="Average PTO">
+      <span matSuffix>%</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgTuition" type="number" matInput placeholder="Average Tuition">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgMedical" type="number" matInput placeholder="Average Medical">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avg401k" type="number" matInput placeholder="Average 401k">
+      <span matSuffix>%</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgDental" type="number" matInput placeholder="Average Dental">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="avgVision" type="number" matInput placeholder="Average Vision">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="onSave()">
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+  </div>
+</div>
