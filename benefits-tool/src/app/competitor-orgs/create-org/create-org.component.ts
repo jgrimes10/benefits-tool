@@ -41,8 +41,6 @@ export class CreateOrgComponent implements OnInit {
       'avgDental': [this.competitor.avgDental],
       'avgVision': [this.competitor.avgVision]
     });
-
-    console.log(this.competitor);
   }
 
   onSave() {
