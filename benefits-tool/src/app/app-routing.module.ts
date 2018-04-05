@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
         {
           path: 'users',
           loadChildren: 'app/users/users.module#UsersModule'
+        },
+        {
+          path: 'relias-benefits',
+          component: ReliasBenefitsComponent
         }
       ]
     }

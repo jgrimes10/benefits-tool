@@ -1,0 +1,32 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 10em;
+}
+
+.card .title {
+    float: left;
+}
+
+.card .amount {
+    text-align: right;
+}
+
+.spinner {
+    margin: 0 auto;
+}
+
+.header-align .mat-expansion-panel-header-title,
+.header-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.header-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save {
+    width: 12em;
+    margin: 5px 0;
+}

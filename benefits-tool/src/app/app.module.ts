@@ -20,11 +20,13 @@ import { OrganizationService } from '../app/shared/services/organization.service
 
 import 'd3';
 import 'nvd3';
+import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    ReliasBenefitsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import 'nvd3';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [
     AuthService,

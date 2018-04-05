@@ -12,7 +12,7 @@ import { User } from '../shared/models/user.model';
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns = ['firstName', 'lastName', 'email', 'isAdmin', 'position', 'edit'];
+  displayedColumns = ['firstName', 'lastName', 'email', 'position', 'edit'];
   dataSource: MatTableDataSource<User>;
 
   users: User[];

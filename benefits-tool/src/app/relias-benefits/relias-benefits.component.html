@@ -1,0 +1,192 @@
+<mat-progress-spinner mode="indeterminate" *ngIf="showSpinner" class="spinner"></mat-progress-spinner>
+
+
+<div *ngIf="!showSpinner" class="benefits">
+
+  <h1 class="my-3 text-center">Relias Benefits</h1>
+  
+  <mat-accordion class="header-align">
+
+    <!-- 401k -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          401k
+        </mat-panel-title>
+        <mat-panel-description>
+          {{myBenefits._401k}}%
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits._401k">
+        <span matSuffix>%</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="100" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits._401k"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- Bonus -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Bonus
+        </mat-panel-title>
+        <mat-panel-description>
+          {{myBenefits.bonus}}%
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.bonus">
+        <span matSuffix>%</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="100" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.bonus"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- Dental -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Dental
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{myBenefits.dental}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.dental">
+        <span matPrefix>$</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="1000" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.dental"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- HSA -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          HSA
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{myBenefits.HSA}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.HSA">
+        <span matPrefix>$</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="1000" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.HSA"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- Medical -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Medical
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{myBenefits.medical}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.medical">
+        <span matPrefix>$</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="1000" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.medical"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- PTO -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          PTO
+        </mat-panel-title>
+        <mat-panel-description>
+          {{myBenefits.pto}}%
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.pto">
+        <span matSuffix>%</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="100" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.pto"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- Tuition -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Tuition Reimbursement
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{myBenefits.tuition}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.pto">
+        <span matPrefix>$</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="10000" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.tuition"></mat-slider>
+    </mat-expansion-panel>
+
+    <!-- Vision -->
+    <mat-expansion-panel class="panel">
+      <!-- Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Vision
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{myBenefits.vision}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Body -->
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="myBenefits.vision">
+        <span matPrefix>$</span>
+      </mat-form-field>
+      <br>
+
+      <mat-slider [max]="1000" [min]="0" [thumb-label]="true" [(ngModel)]="myBenefits.vision"></mat-slider>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div align="center">
+  <button mat-raised-button color="primary" class="save" (click)="onSave()">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</div>
