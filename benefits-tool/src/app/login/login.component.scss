@@ -1,3 +1,17 @@
+.img-container {
+    height: 100vh;
+    background-image: url('assets/background-business.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: initial;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .login-field {
     margin-bottom: 1em;
     display: flex;
@@ -5,7 +19,7 @@
 }
 
 .card {
-    margin: 3em 30%;
+    margin: 10em 30%;
 }
 
 .card > * {
