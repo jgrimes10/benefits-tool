@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NvD3Module } from 'ng2-nvd3';
 import { AngularFireModule } from 'angularfire2';
@@ -20,11 +20,13 @@ import { OrganizationService } from '../app/shared/services/organization.service
 
 import 'd3';
 import 'nvd3';
+import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    ReliasBenefitsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import 'nvd3';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [
     AuthService,

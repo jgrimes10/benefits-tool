@@ -31,10 +31,4 @@ export class CreateUserComponent implements OnInit {
       admin: [this.user.isAdmin]
     });
   }
-
-  createUser() {
-    this.userService.createUser(this.user).subscribe(res => {
-      console.log(res);
-    });
-  }
 }
