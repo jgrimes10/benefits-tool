@@ -4,8 +4,8 @@
     <h1>Benefits App</h1>
   </div>
   <div class="right-header">
-    <mat-icon color="secondary">person</mat-icon>
     <span>{{user?.firstName}}</span>
+    <mat-icon color="secondary" routerLink="/login" (click)="logout()">exit_to_app</mat-icon>
   </div>
 </mat-toolbar>
 
@@ -16,7 +16,6 @@
       <li><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
       <li><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
       <li><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Competitor Organizations</a></li>
-      <li><a routerLinkActive="nav-selected" routerLink="/login" (click)="logout()">Logout</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content class="d-flex" role="main">
