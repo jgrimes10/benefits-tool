@@ -9,6 +9,10 @@
 
   a {
     color: white;
+
+    &.nav-selected {
+      color: #ffd740;
+    }
   }
 }
 
