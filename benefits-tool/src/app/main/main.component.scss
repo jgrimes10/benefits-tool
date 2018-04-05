@@ -1,5 +1,7 @@
 .mat-toolbar {
   height: 9vh;
+  position: fixed;
+  z-index: 10;
 
   span {
     color: #323232;
@@ -23,6 +25,7 @@
   background: #323232;
   min-height: 91vh;
   outline: none;
+  width: 200px;
 
   a {
     color: white;
@@ -62,6 +65,7 @@ h1 {
 }
 
 .container {
+  margin-top: 9vh;
   min-height: 91vh;
   padding: 20px 40px;
 }
