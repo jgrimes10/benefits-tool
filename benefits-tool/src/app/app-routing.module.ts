@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
+import { CompetitorOrgsComponent } from './competitor-orgs/competitor-orgs.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
         {
           path: 'relias-benefits',
           component: ReliasBenefitsComponent
+        },
+        {
+          path: 'competitor-orgs',
+          component: CompetitorOrgsComponent
         }
       ]
     }

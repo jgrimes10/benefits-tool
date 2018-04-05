@@ -21,12 +21,14 @@ import { OrganizationService } from '../app/shared/services/organization.service
 import 'd3';
 import 'nvd3';
 import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
+import { CompetitorOrgsComponent } from './competitor-orgs/competitor-orgs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    ReliasBenefitsComponent
+    ReliasBenefitsComponent,
+    CompetitorOrgsComponent
   ],
   imports: [
     BrowserModule,
