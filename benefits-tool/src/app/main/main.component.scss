@@ -1,5 +1,10 @@
+.mat-toolbar {
+  height: 9vh;
+}
+
 .mat-sidenav {
   background: #323232;
+  min-height: 91vh;
   outline: none;
 
   a {
@@ -28,8 +33,14 @@ h1 {
 }
 
 .mat-icon {
+  line-height: 32px;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.container {
+  min-height: 91vh;
+  padding: 20px 40px;
 }
