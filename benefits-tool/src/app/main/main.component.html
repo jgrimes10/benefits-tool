@@ -10,12 +10,12 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav fixedTopGap="64" #sidenav [(opened)]="opened" role="navigation" mode="side">
+  <mat-sidenav fixedInViewport fixedTopGap="30" #sidenav [(opened)]="opened" role="navigation" mode="side">
     <ul class="menu">
       <li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
       <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
       <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
-      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Competitor Organizations</a></li>
+      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/market-research">Market Research</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content role="main">

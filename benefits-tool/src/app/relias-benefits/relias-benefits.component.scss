@@ -1,7 +1,8 @@
 .panel {
     display: flex;
     flex-direction: column;
-    margin: 1em 10em;
+    margin: 1em auto;
+    width: 400px;
 }
 
 .card .title {
@@ -24,6 +25,15 @@
 .header-align .mat-expansion-panel-header-description {
     justify-content: space-between;
     align-items: center;
+}
+
+.mat-form-field {
+    padding-left: 8px;
+    width: 100px !important;
+}
+
+.mat-slider {
+    padding-left: 0;
 }
 
 .save {

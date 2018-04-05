@@ -17,75 +17,75 @@
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: #1F77B4">
             <p>Salary</p>
           </div>
-          <div class="col-md-4">
-            <p>{{this.user !== undefined ? '$' + this.user.salary : '$100,000.00'}}</p>
+          <div class="col-md-4" style="background-color: #1F77B4">
+            <p>{{this.user !== undefined ? (this.user.salary | currency) : '$100,000.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4 alt-row">
+          <div class="col-md-4" style="background-color: #AEC7E8">
             <p>Bonus</p>
           </div>
-          <div class="col-md-4 alt-row">
-            <p>{{this.user !== undefined ? '$' + this.user.bonus : '$10,000.00'}}</p>
+          <div class="col-md-4" style="background-color: #AEC7E8">
+            <p>{{this.user !== undefined ? (this.user.bonus | currency) : '$10,000.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: #FF7F0E">
             <p>401k</p>
           </div>
-          <div class="col-md-4">
-            <p>{{this.user !== undefined ? '$' + this.user._401k : '$6,000.00'}}</p>
+          <div class="col-md-4" style="background-color: #FF7F0E">
+            <p>{{this.user !== undefined ? (this.user._401k | currency) : '$6,000.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4 alt-row">
+          <div class="col-md-4" style="background-color: #ffbb78">
             <p>Medical</p>
           </div>
-          <div class="col-md-4 alt-row">
-            <p>{{this.user !== undefined ? '$' + this.user.medical : '$475.00'}}</p>
+          <div class="col-md-4 " style="background-color: #ffbb78">
+            <p>{{this.user !== undefined ? (this.user.medical | currency) : '$475.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: #2ca02c">
             <p>Dental</p>
           </div>
-          <div class="col-md-4">
-            <p>{{this.user !== undefined ? '$' + this.user.dental : '$125.00'}}</p>
+          <div class="col-md-4" style="background-color: #2ca02c">
+            <p>{{this.user !== undefined ? (this.user.dental | currency) : '$125.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4 alt-row">
+          <div class="col-md-4 " style="background-color: #98df8a">
             <p>Vision</p>
           </div>
-          <div class="col-md-4 alt-row">
-            <p>{{this.user !== undefined ? '$' + this.user.vision : '$125.00'}}</p>
+          <div class="col-md-4 " style="background-color: #98df8a">
+            <p>{{this.user !== undefined ? (this.user.vision | currency) : '$125.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: #d62728">
             <p>HSA</p>
           </div>
-          <div class="col-md-4">
-            <p>{{this.user !== undefined ? '$' + this.user.hsa : '$500.00'}}</p>
+          <div class="col-md-4" style="background-color: #d62728">
+            <p>{{this.user !== undefined ? (this.user.hsa | currency) : '$500.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4 alt-row">
+          <div class="col-md-4 " style="background-color: #ff9896">
             <p>PTO</p>
           </div>
-          <div class="col-md-4 alt-row">
-            <p>{{this.user !== undefined ? '$' + this.user.pto : '$7000.00'}}</p>
+          <div class="col-md-4" style="background-color: #ff9896">
+            <p>{{this.user !== undefined ? (this.user.pto | currency) : '$7000.00'}}</p>
           </div>
         </div>
         <div class="row justify-content-md-center">
-          <div class="col-md-4">
+          <div class="col-md-4" style="background-color: #9467bd">
             <p>Tuition</p>
           </div>
-          <div class="col-md-4">
-            <p>{{this.user !== undefined ? '$' + this.user.tuition : '$4000.00'}}</p>
+          <div class="col-md-4" style="background-color: #9467bd">
+            <p>{{this.user !== undefined ? (this.user.tuition | currency) : '$4000.00'}}</p>
           </div>
         </div>
       </div>
