@@ -10,20 +10,37 @@
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Department">
-      <mat-option value="sales">Sales</mat-option>
-      <mat-option value="engineering">Engineering</mat-option>
+      <mat-option value="Sales">Sales</mat-option>
+      <mat-option value="Engineering">Engineering</mat-option>
+      <mat-option value="IT & Business Systems">IT & Business Systems</mat-option>
+      <mat-option value="Client Care">Client Care</mat-option>
+      <mat-option value="Product Management">Product Management</mat-option>
+      <mat-option value="Content Development">Content Development</mat-option>
+      <mat-option value="POD">POD</mat-option>
+      <mat-option value="Clinical Content">Clinical Content</mat-option>
+      <mat-option value="Controlling, Finance & Legal">Controlling, Finance & Legal</mat-option>
+      <mat-option value="Marketing">Marketing</mat-option>
+      <mat-option value="eCommerce">eCommerce</mat-option>
+      <mat-option value="Acquisition Integration">Acquisition Integration</mat-option>
+      <mat-option value="Corporate Development">Corporate Development</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Position">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="short">
     <input matInput placeholder="Salary">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="short">
     <mat-select placeholder="Is this user an admin?">
       <mat-option value="yes">Yes</mat-option>
       <mat-option value="no">No</mat-option>
     </mat-select>
   </mat-form-field>
+  <div class="d-flex justify-content-end btn-container">
+    <button mat-raised-button color="primary">
+      <span *ngIf="true">Create</span>
+      <span *ngIf="false">Update</span>
+    </button>
+  </div>
 </div>
