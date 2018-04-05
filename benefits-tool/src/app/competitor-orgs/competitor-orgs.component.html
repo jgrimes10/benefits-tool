@@ -4,3 +4,44 @@
     Add Org
   </button>
 </div>
+
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Org Name Column -->
+    <ng-container matColumnDef="orgName">
+      <mat-header-cell *matHeaderCellDef>Organization Name</mat-header-cell>
+      <mat-cell *matCellDef="let org"> {{org.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Avg Salary Column -->
+    <ng-container matColumnDef="avgSalary">
+      <mat-header-cell *matHeaderCellDef>Average Salary</mat-header-cell>
+      <mat-cell *matCellDef="let org"> ${{org.avgSalary}} </mat-cell>
+    </ng-container>
+
+    <!-- Avg Bonus Column -->
+    <ng-container matColumnDef="avgBonus">
+      <mat-header-cell *matHeaderCellDef>Average Bonus</mat-header-cell>
+      <mat-cell *matCellDef="let org"> {{org.avgBonus}}% </mat-cell>
+    </ng-container>
+
+    <!-- Avg Medical Column -->
+    <ng-container matColumnDef="avgMedical">
+      <mat-header-cell *matHeaderCellDef>Average Medical</mat-header-cell>
+      <mat-cell *matCellDef="let org"> ${{org.avgMedical}} </mat-cell>
+    </ng-container>
+
+    <!-- Edit Button -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <button (click)="openUpdateOrgModal(org)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

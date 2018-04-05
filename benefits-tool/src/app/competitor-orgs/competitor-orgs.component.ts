@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 
 import { CreateOrgComponent } from './create-org/create-org.component';
+import { OrganizationService } from '../shared/services/organization.service';
+import { CompetitorOrganization } from '../shared/models/organization.model';
 
 @Component({
   selector: 'app-competitor-orgs',
@@ -10,9 +12,21 @@ import { CreateOrgComponent } from './create-org/create-org.component';
 })
 export class CompetitorOrgsComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  displayedColumns = ['orgName', 'avgSalary', 'avgBonus', 'avgMedical', 'edit'];
+  dataSource: MatTableDataSource<CompetitorOrganization>;
+
+  orgs: CompetitorOrganization[];
+
+  constructor(
+    public dialog: MatDialog,
+    private orgService: OrganizationService
+  ) { }
 
   ngOnInit() {
+    this.orgService.getCompetitorOrganizations().subscribe(orgs => {
+      this.orgs = orgs;
+      this.dataSource = new MatTableDataSource<CompetitorOrganization>(orgs);
+    });
   }
 
   openCreateNewOrgModal() {

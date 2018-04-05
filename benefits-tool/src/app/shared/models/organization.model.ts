@@ -12,6 +12,7 @@ export class CompetitorOrganization {
     this.avgPTO = avgPTO || 0;
   }
 
+  $key: string;
   name: string;
   avgSalary: number;
   avgBonus: number;
