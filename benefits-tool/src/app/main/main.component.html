@@ -1,6 +1,12 @@
-<mat-toolbar>
-  <mat-icon (click)="sidenav.toggle()" color="primary">menu</mat-icon>
-  <h1>Benefits App</h1>
+<mat-toolbar class="d-flex flex-row justify-content-between">
+  <div class="left-header d-flex">
+    <mat-icon (click)="sidenav.toggle()" color="primary">menu</mat-icon>
+    <h1>Benefits App</h1>
+  </div>
+  <div class="right-header">
+    <mat-icon color="secondary">person</mat-icon>
+    <span>{{user?.firstName}}</span>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
