@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
+import { OrganizationService } from './organization.service';
 import { User } from '../models/user.model';
+import { ReliasBenefits } from '../models/relias-benefits.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -14,9 +15,9 @@ export class UserService {
   private users$: FirebaseListObservable<User[]>;
 
   constructor(
-    private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
-    private router: Router
+    private router: Router,
+    private orgService: OrganizationService
   ) {
     this.users$ = this.db.list('users');
   }
@@ -31,13 +32,18 @@ export class UserService {
     );
   }
 
-  createUser(email, isAdmin, firstName, lastName, position, salary, bonus,
-    _401k, medical, dental, hsa, pto, tuition): void {
-    // use model to instantiate new user with data from create user modal
-    // push the instantiation to firebase list observable
-    const newUser = new User(email, isAdmin, firstName, lastName, position, salary, bonus,
-      _401k, medical, dental, hsa, pto, tuition);
-      this.users$.push(newUser);
+  createUser(user: User): void {
+    this.orgService.getReliasBenefits().subscribe(benefits => {
+      user._401k = Number((user.salary * (benefits._401k / 100)).toFixed(2));
+      user.bonus = Number((user.salary * (benefits.bonus / 100)).toFixed(2));
+      user.dental = benefits.dental;
+      user.hsa = benefits.HSA;
+      user.medical = benefits.medical;
+      user.tuition = benefits.tuition;
+      user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
+      this.users$.push(user);
+    });
+
   }
 
   // user will not be able to update their email
