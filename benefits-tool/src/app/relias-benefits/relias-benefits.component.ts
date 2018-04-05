@@ -35,7 +35,6 @@ export class ReliasBenefitsComponent implements OnInit {
   }
 
   onSave() {
-    console.log('saved ' + this.myBenefits);
     this.orgService.updateReliasBenefits(this.myBenefits);
     this.openSnackBar();
   }
