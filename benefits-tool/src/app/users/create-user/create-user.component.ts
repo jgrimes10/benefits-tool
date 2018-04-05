@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,16 +14,13 @@ import { UserService } from '../../shared/services/user.service';
 export class CreateUserComponent implements OnInit {
   user: User;
   userForm: FormGroup;
-  // isAdmin: boolean;
-  // email: string;
-  // firstName: string;
-  // lastName: string;
-  // position: string;
-  // department: string;
-  // salary: number;
-  // medical: number;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(
+    public dialogRef: MatDialogRef<CreateUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     this.buildForm();
@@ -55,8 +52,8 @@ export class CreateUserComponent implements OnInit {
       form.controls.salary.value,
       form.controls.medicalType.value
     );
-    console.log(user);
 
-    // this.userService.createUser(this.user);
+    this.userService.createUser(user);
+    this.dialogRef.close();
   }
 }
