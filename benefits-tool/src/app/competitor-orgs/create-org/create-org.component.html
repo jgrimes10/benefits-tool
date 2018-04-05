@@ -41,7 +41,11 @@
       <span matSuffix>.00</span>
     </mat-form-field>
   </div>
-  <div>
+  <div class="text-right">
+    <button mat-raised-button color="primary" (click)="onCancel()">
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
     <button mat-raised-button color="primary" (click)="onSave()">
       <mat-icon>save</mat-icon>
       Save
