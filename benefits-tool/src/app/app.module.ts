@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NvD3Module } from 'ng2-nvd3';
 import { AngularFireModule } from 'angularfire2';
@@ -33,6 +33,7 @@ import 'nvd3';
     BrowserAnimationsModule,
     NvD3Module,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule

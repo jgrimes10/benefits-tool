@@ -1,47 +1,56 @@
 <div class="modal-container">
-  <mat-form-field>
-    <input formControlName="firstName" matInput placeholder="First Name">
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="lastName" matInput placeholder="Last Name">
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="email" matInput placeholder="Email">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select formControlName="department" placeholder="Department">
-      <mat-option value="Sales">Sales</mat-option>
-      <mat-option value="Engineering">Engineering</mat-option>
-      <mat-option value="IT & Business Systems">IT & Business Systems</mat-option>
-      <mat-option value="Client Care">Client Care</mat-option>
-      <mat-option value="Product Management">Product Management</mat-option>
-      <mat-option value="Content Development">Content Development</mat-option>
-      <mat-option value="POD">POD</mat-option>
-      <mat-option value="Clinical Content">Clinical Content</mat-option>
-      <mat-option value="Controlling, Finance & Legal">Controlling, Finance & Legal</mat-option>
-      <mat-option value="Marketing">Marketing</mat-option>
-      <mat-option value="eCommerce">eCommerce</mat-option>
-      <mat-option value="Acquisition Integration">Acquisition Integration</mat-option>
-      <mat-option value="Corporate Development">Corporate Development</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="position" matInput placeholder="Position">
-  </mat-form-field>
-  <mat-form-field class="short">
-    <input formControlName="salary" matInput min="0" type="number" placeholder="Salary">
-    <span matPrefix>$&nbsp;</span>
-    <span matSuffix>.00</span>
-  </mat-form-field>
-  <mat-form-field class="short">
-    <mat-select formControlName="admin" placeholder="Is this user an admin?">
-      <mat-option value="yes">Yes</mat-option>
-      <mat-option value="no">No</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div [formGroup]="userForm">
+    <mat-form-field>
+      <input formControlName="firstName" matInput placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="lastName" matInput placeholder="Last Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="email" matInput placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="department" placeholder="Department">
+        <mat-option value="Sales">Sales</mat-option>
+        <mat-option value="Engineering">Engineering</mat-option>
+        <mat-option value="IT & Business Systems">IT & Business Systems</mat-option>
+        <mat-option value="Client Care">Client Care</mat-option>
+        <mat-option value="Product Management">Product Management</mat-option>
+        <mat-option value="Content Development">Content Development</mat-option>
+        <mat-option value="POD">POD</mat-option>
+        <mat-option value="Clinical Content">Clinical Content</mat-option>
+        <mat-option value="Controlling, Finance & Legal">Controlling, Finance & Legal</mat-option>
+        <mat-option value="Marketing">Marketing</mat-option>
+        <mat-option value="eCommerce">eCommerce</mat-option>
+        <mat-option value="Acquisition Integration">Acquisition Integration</mat-option>
+        <mat-option value="Corporate Development">Corporate Development</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="position" matInput placeholder="Position">
+    </mat-form-field>
+    <mat-form-field class="short">
+      <input formControlName="salary" matInput min="0" type="number" placeholder="Salary">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="medical" placeholder="Medical">
+        <mat-option value="Individual">Individual</mat-option>
+        <mat-option value="Family">Family</mat-option>
+        <mat-option value="None">None</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="short">
+      <mat-select formControlName="isAdmin" placeholder="Is this user an admin?">
+        <mat-option value="yes">Yes</mat-option>
+        <mat-option value="no">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="d-flex justify-content-end btn-container">
     <button mat-raised-button color="primary">
-      <span *ngIf="true">Create</span>
+      <span *ngIf="true" (click)="createUser()">Create</span>
       <span *ngIf="false">Update</span>
     </button>
   </div>
