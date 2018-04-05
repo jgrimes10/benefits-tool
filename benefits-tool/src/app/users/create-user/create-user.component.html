@@ -35,7 +35,7 @@
       <span matSuffix>.00</span>
     </mat-form-field>
     <mat-form-field>
-      <mat-select formControlName="medical" placeholder="Medical">
+      <mat-select formControlName="medicalType" placeholder="Medical">
         <mat-option value="Individual">Individual</mat-option>
         <mat-option value="Family">Family</mat-option>
         <mat-option value="None">None</mat-option>
@@ -50,7 +50,7 @@
   </div>
   <div class="d-flex justify-content-end btn-container">
     <button mat-raised-button color="primary">
-      <span *ngIf="true" (click)="createUser()">Create</span>
+      <span *ngIf="true" (click)="createUser();">Create</span>
       <span *ngIf="false">Update</span>
     </button>
   </div>

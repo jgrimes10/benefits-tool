@@ -38,23 +38,23 @@ export class CreateUserComponent implements OnInit {
       'department': ['', Validators.required],
       'salary': ['', Validators.required],
       'isAdmin': ['', Validators.required],
-      'medical': ['', Validators.required]
+      'medicalType': ['', Validators.required]
     });
   }
 
 
   createUser() {
     const form = this.userForm;
-    const user = new User({
-      firstName: form.controls.firstName.value,
-      lastName: form.controls.lastName.value,
-      // email: form.controls.email.value,
-      // position: form.controls.position.value,
-      // department: form.controls.department.value,
-      // salary: form.controls.salary.value,
-      // isAdmin: form.controls.isAdmin.value,
-      // medical: form.controls.medical.value
-    });
+    const user = new User(
+      form.controls.email.value,
+      form.controls.isAdmin.value,
+      form.controls.firstName.value,
+      form.controls.lastName.value,
+      form.controls.position.value,
+      form.controls.department.value,
+      form.controls.salary.value,
+      form.controls.medicalType.value
+    );
     console.log(user);
 
     // this.userService.createUser(this.user);
