@@ -34,6 +34,12 @@ export class OrganizationService {
     return this.competitorOrgs$.map<CompetitorOrganization[], CompetitorOrganization[]>(orgs => orgs);
   }
 
+  getCompetitorOrganizationsByPosition(position: string): Observable<CompetitorOrganization[]> {
+    return this.competitorOrgs$.map<CompetitorOrganization[], CompetitorOrganization[]>(orgs => {
+      return orgs.filter(org => org.position === position);
+    });
+  }
+
   insertCompetitorOrganization(orgObj) {
     this.competitorOrgs$.push(orgObj);
   }
