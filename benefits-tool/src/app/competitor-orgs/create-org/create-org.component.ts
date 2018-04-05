@@ -28,37 +28,40 @@ export class CreateOrgComponent implements OnInit {
   }
 
   buildForm() {
+    this.competitor = this.data || new CompetitorOrganization('');
     this.orgForm = this.formBuilder.group({
-      'orgName': ['', Validators.required],
-      'avgSalary': [''],
-      'avgBonus': [''],
-      'avgPTO': [''],
-      'avgTuition': [''],
-      'avgMedical': [''],
-      'avg401k': [''],
-      'avgDental': [''],
-      'avgVision': ['']
+      'orgName': [this.competitor.name, Validators.required],
+      'avgSalary': [this.competitor.avgSalary],
+      'avgBonus': [this.competitor.avgBonus],
+      'avgPTO': [this.competitor.avgPTO],
+      'avgTuition': [this.competitor.avgTuition],
+      'avgMedical': [this.competitor.avgMedical],
+      'avg401k': [this.competitor.avg401k],
+      'avgDental': [this.competitor.avgDental],
+      'avgVision': [this.competitor.avgVision]
     });
+
+    console.log(this.competitor);
   }
 
   onSave() {
     const form = this.orgForm;
-    const org = new CompetitorOrganization(
-      form.controls.orgName.value,
-      form.controls.avgSalary.value,
-      form.controls.avgBonus.value,
-      form.controls.avg401k.value,
-      form.controls.avgMedical.value,
-      form.controls.avgDental.value,
-      form.controls.avgVision.value,
-      form.controls.avgTuition.value,
-      form.controls.avgPTO.value,
-    );
 
-    if (!org.$key) {
-      this.orgService.insertCompetitorOrganization(org);
+    this.competitor.name = form.controls.orgName.value;
+    this.competitor.avgSalary = form.controls.avgSalary.value;
+    this.competitor.avgBonus = form.controls.avgBonus.value;
+    this.competitor.avgPTO = form.controls.avgPTO.value;
+    this.competitor.avgTuition = form.controls.avgTuition.value;
+    this.competitor.avgMedical = form.controls.avgMedical.value;
+    this.competitor.avg401k = form.controls.avg401k.value;
+    this.competitor.avgDental = form.controls.avgDental.value;
+    this.competitor.avgVision = form.controls.avgVision.value;
+
+
+    if (!this.competitor.$key) {
+      this.orgService.insertCompetitorOrganization(this.competitor);
     } else {
-      this.orgService.updateCompetitorOrganization(org);
+      this.orgService.updateCompetitorOrganization(this.competitor);
     }
     this.diaglogRef.close();
   }

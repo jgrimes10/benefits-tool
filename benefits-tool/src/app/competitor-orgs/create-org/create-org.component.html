@@ -47,8 +47,8 @@
       Cancel
     </button>
     <button mat-raised-button color="primary">
-      <mat-icon *ngIf="user?.$key">save</mat-icon>
-      <mat-icon *ngIf="!user?.$key">add</mat-icon>
+      <mat-icon *ngIf="competitor?.$key" (click)="onSave();">save</mat-icon>
+      <mat-icon *ngIf="!competitor?.$key" (click)="onSave();">add</mat-icon>
       Save
     </button>
   </div>
