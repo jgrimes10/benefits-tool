@@ -8,7 +8,11 @@ import {
   MatInputModule,
   MatSelectModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSliderModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatExpansionModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +27,11 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -35,7 +43,11 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ]
 })
 export class CustomMaterialModule { }

@@ -39,7 +39,6 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-
   createUser() {
     const form = this.userForm;
     const user = new User(
