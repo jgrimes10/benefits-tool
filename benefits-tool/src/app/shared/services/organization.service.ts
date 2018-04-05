@@ -19,4 +19,8 @@ export class OrganizationService {
   getReliasBenefits(): Observable<ReliasBenefits> {
     return this.reliasBenefits$.map<ReliasBenefits, ReliasBenefits>(relias => relias);
   }
+
+  updateReliasBenefits(reliasBenefits: ReliasBenefits) {
+    this.reliasBenefits$.set(reliasBenefits);
+  }
 }
