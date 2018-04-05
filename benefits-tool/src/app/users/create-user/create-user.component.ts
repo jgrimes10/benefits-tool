@@ -52,8 +52,7 @@ export class CreateUserComponent implements OnInit {
     this.user.salary = form.controls.salary.value;
     this.user.medicalType = form.controls.medicalType.value;
 
-    console.log(this.user);
-    if (this.user.$key) {
+    if (!this.user.$key) {
       this.userService.createUser(this.user);
     } else {
       this.userService.updateUser(this.user);
