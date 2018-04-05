@@ -33,8 +33,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   createUser() {
-    this.userService.createUser(this.user).subscribe(res => {
-      console.log(res);
-    });
+    this.userService.createUser(this.user);
   }
 }

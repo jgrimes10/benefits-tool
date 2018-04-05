@@ -16,8 +16,7 @@ export class UserService {
 
   constructor(
     private db: AngularFireDatabase,
-    private router: Router,
-    private orgService: OrganizationService
+    private router: Router
   ) {
     this.users$ = this.db.list('users');
   }
@@ -33,7 +32,7 @@ export class UserService {
   }
 
   createUser(user: User): void {
-    this.orgService.getReliasBenefits().subscribe(benefits => {
+    this.db.object('relias').subscribe(benefits => {
       user._401k = Number((user.salary * (benefits._401k / 100)).toFixed(2));
       user.bonus = Number((user.salary * (benefits.bonus / 100)).toFixed(2));
       user.dental = benefits.dental;
