@@ -1,0 +1,17 @@
+.login-field {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    margin: 3em 30%;
+}
+
+.card > * {
+    width: 100%;
+}
+
+.submit-button {
+    width: 12em;
+}

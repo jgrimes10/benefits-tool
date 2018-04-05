@@ -1,12 +1,56 @@
-<h1>Benefits App</h1>
+<div class="login-form">
+
+  <mat-toolbar color="primary">
+    Benefits App
+  </mat-toolbar>
+
+  <mat-card class="card">
+    <mat-card-subtitle>Please log in</mat-card-subtitle>
+
+    <mat-card-content>
+      <div class="login-field">
+        <mat-form-field (keyup.enter)="onSubmit()">
+          <input matInput placeholder="Email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="login-field">
+        <mat-form-field (keyup.enter)="onSubmit()">
+          <input matInput placeholder="Password" [formControl]="password" required
+            [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions" align="center">
+      <button mat-raised-button color="primary" (click)="onSubmit()" class="submit-button">
+        <mat-icon>person</mat-icon>
+        Log-In
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<!--<h1>Benefits App</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div>
-    <label class="center-block">Email:</label>
-    <input type="text" formControlName="username">
+    <mat-form-field>
+    <!--label class="center-block">Email:</label>
+    <input matInput placeholder="Email" [formControl]="emailFormControl"
+      formControlName="username" [errorStateMatcher]="matcher">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
   </div>
   <div>
-    <label class="center-block">Password:</label>
-    <input type="password" formControlName="password">
+    <!--<label class="center-block">Password:</label>
+    <input matInput type="password" formControlName="password">
   </div>
   <button type="submit">Log In</button>
-</form>
+</form>-->
