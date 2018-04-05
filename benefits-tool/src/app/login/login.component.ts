@@ -9,7 +9,7 @@ import { ErrorStateMatcher } from '@angular/material';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   hide = true;
 
@@ -20,6 +20,10 @@ export class LoginComponent {
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+
+  ngOnInit() {
+    document.body.classList.add('login-bg');
+  }
 
   getEmailError() {
     return this.email.hasError('required') ? 'You must enter a value' :
