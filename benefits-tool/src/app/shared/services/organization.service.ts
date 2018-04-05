@@ -30,6 +30,10 @@ export class OrganizationService {
     this.userService.updateUsers(reliasBenefits);
   }
 
+  getCompetitorOrganizations(): Observable<CompetitorOrganization[]> {
+    return this.competitorOrgs$.map<CompetitorOrganization[], CompetitorOrganization[]>(orgs => orgs);
+  }
+
   insertCompetitorOrganization(orgObj) {
     this.competitorOrgs$.push(orgObj);
   }
