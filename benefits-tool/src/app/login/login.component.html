@@ -2,8 +2,11 @@
 <div class="login-form">
 
   <mat-card class="card">
-    <mat-card-title class="text-center">Benefits App</mat-card-title>
+    <mat-card-title class="text-center mt-3">Benefits App</mat-card-title>
     <mat-card-subtitle class="text-center">Please use the credentials provided by your system administrator.</mat-card-subtitle>
+    <div *ngIf="errorMessage" class="text-danger mb-3">
+      {{ errorMessage }}
+    </div>
 
     <mat-card-content>
       <div class="login-field">
@@ -23,7 +26,7 @@
       </div>
     </mat-card-content>
 
-    <mat-card-actions class="card-actions" align="center">
+    <mat-card-actions class="card-actions mt-4 mb-3" align="center">
       <button mat-raised-button color="primary" (click)="onSubmit()" class="submit-button">
         <mat-icon>person</mat-icon>
         Log-In

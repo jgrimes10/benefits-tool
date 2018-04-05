@@ -12,6 +12,7 @@ import { ErrorStateMatcher } from '@angular/material';
 export class LoginComponent implements OnInit {
 
   hide = true;
+  errorMessage: string;
 
   constructor(
     private authService: AuthService,
@@ -34,6 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authService.signInWithEmailAndPassword(this.email.value, this.password.value);
+    this.authService.signInWithEmailAndPassword(this.email.value, this.password.value)
+      .catch(error => {
+        this.errorMessage = error.message;
+      });
   }
 }
