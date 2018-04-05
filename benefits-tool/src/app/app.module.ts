@@ -21,6 +21,7 @@ import { OrganizationService } from '../app/shared/services/organization.service
 import 'd3';
 import 'nvd3';
 import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
+import { XlsxService } from './shared/services/xlsx.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.compo
     AuthService,
     AuthGuard,
     UserService,
-    OrganizationService
+    OrganizationService,
+    XlsxService
   ],
   bootstrap: [AppComponent]
 })

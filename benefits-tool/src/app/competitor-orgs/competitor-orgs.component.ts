@@ -4,6 +4,9 @@ import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource } from '@a
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { OrganizationService } from '../shared/services/organization.service';
 import { CompetitorOrganization } from '../shared/models/organization.model';
+import { XlsxService } from '../shared/services/xlsx.service';
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-competitor-orgs',
   templateUrl: './competitor-orgs.component.html',
@@ -13,12 +16,14 @@ export class CompetitorOrgsComponent implements OnInit {
 
   displayedColumns = ['orgName', 'compPosition', 'avgSalary', 'avgBonus', 'avgMedical', 'edit'];
   dataSource: MatTableDataSource<CompetitorOrganization>;
-
   orgs: CompetitorOrganization[];
+  showUpload = false;
+  fileSelected: File;
 
   constructor(
     public dialog: MatDialog,
-    private orgService: OrganizationService
+    private orgService: OrganizationService,
+    private xlsxService: XlsxService
   ) { }
 
   ngOnInit() {
@@ -39,5 +44,14 @@ export class CompetitorOrgsComponent implements OnInit {
       data: org,
       width: '40%'
     });
+  }
+
+  onChange(event) {
+    this.showUpload = true;
+    this.fileSelected = event.target.files[0];
+  }
+
+  upload() {
+    this.xlsxService.uploadFile(this.fileSelected);
   }
 }
