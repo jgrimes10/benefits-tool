@@ -29,7 +29,7 @@ const routes: Routes = [
           component: ReliasBenefitsComponent
         },
         {
-          path: 'competitor-orgs',
+          path: 'market-research',
           loadChildren: 'app/competitor-orgs/competitor-orgs.module#CompetitorOrgsModule'
         }
       ]

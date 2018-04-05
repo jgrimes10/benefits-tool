@@ -15,7 +15,7 @@
       <li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="nav-selected" routerLink="/">Dashboard</a></li>
       <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/relias-benefits">Relias Benefits</a></li>
       <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/users">Users</a></li>
-      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/competitor-orgs">Market Research</a></li>
+      <li *ngIf="user?.isAdmin"><a routerLinkActive="nav-selected" routerLink="/market-research">Market Research</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content role="main">
