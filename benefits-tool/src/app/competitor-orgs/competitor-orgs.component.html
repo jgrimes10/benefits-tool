@@ -3,6 +3,12 @@
     <mat-icon>add</mat-icon>
     New Entry
   </button>
+  <button mat-raised-button color="primary" class="button">
+    <input type="file" (change)="onChange($event)" />
+  </button>
+  <button mat-raised-button color="primary" class="button" *ngIf="showUpload" (click)="upload()">
+    Upload
+  </button>
 </div>
 
 <div class="table-container mat-elevation-z8">
