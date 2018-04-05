@@ -32,9 +32,9 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-  createUser() {
-    this.userService.createUser(this.user).subscribe(res => {
-      console.log(res);
-    });
-  }
+  // createUser() {
+  //   this.userService.createUser(this.user).subscribe(res => {
+  //     console.log(res);
+  //   });
+  // }
 }

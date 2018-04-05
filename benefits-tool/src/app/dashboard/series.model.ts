@@ -1,6 +1,7 @@
 export class SeriesModel {
   key: string;
-  values: Array< {key: string, y: number}>;
+  color: string;
+  values: Array< {label: string, value: number}>;
   constructor() {
       this.values = new Array();
   }
