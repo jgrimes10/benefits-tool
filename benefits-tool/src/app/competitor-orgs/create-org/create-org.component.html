@@ -41,14 +41,14 @@
       <span matSuffix>.00</span>
     </mat-form-field>
   </div>
-  <div class="text-right">
+  <div class="text-right" mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="onCancel()">
       <mat-icon>cancel</mat-icon>
       Cancel
     </button>
-    <button mat-raised-button color="primary">
-      <mat-icon *ngIf="competitor?.$key" (click)="onSave();">save</mat-icon>
-      <mat-icon *ngIf="!competitor?.$key" (click)="onSave();">add</mat-icon>
+    <button mat-raised-button color="primary" (click)="onSave();">
+      <mat-icon *ngIf="competitor?.$key">save</mat-icon>
+      <mat-icon *ngIf="!competitor?.$key">add</mat-icon>
       Save
     </button>
   </div>
