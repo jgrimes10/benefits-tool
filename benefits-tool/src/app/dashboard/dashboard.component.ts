@@ -32,8 +32,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.authService.getCurrentUser();
-    console.log(this.user);
+    this.authService.getCurrentUser().subscribe(user => {
+      this.user = user[0];
+    });
 
     this.pieOptions = {
       chart: {

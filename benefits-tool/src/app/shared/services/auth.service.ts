@@ -14,7 +14,6 @@ export class AuthService {
   user$: Observable<firebase.User>;
   private users$: FirebaseListObservable<User[]>;
   private userEmail: string;
-  private currentUser: User;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -27,9 +26,6 @@ export class AuthService {
         this.logout();
       } else {
         this.userEmail = user.email;
-      }
-      if (!this.currentUser) {
-        this.setAuthenticatedUser();
       }
     });
   }
@@ -49,12 +45,14 @@ export class AuthService {
         const newUser = new User(this.userEmail, false);
         this.users$.push(newUser);
       }
-      this.currentUser = authenticatedUser;
     });
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getCurrentUser(): Observable<User[]> {
+    this.users$ = this.db.list('users');
+    return this.users$.map<User[], User[]>(users => {
+      return users.filter(user => user.email === this.userEmail);
+    });
   }
 
   logout(): void {
