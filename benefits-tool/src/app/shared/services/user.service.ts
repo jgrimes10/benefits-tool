@@ -49,10 +49,7 @@ export class UserService {
   updateUser(userObj) {
     // get user to update using user's $key
     const user$ = this.db.object(`users/${userObj.$key}`);
-    user$.subscribe(user => {
-      const userToUpdate: User = user;
-      user$.set(userToUpdate);
-    });
+    user$.set(userObj);
   }
 
   updateUsers(reliasBenefits: ReliasBenefits): void {
