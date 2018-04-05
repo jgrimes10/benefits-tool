@@ -38,10 +38,6 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(() => {
           this.router.navigate(['']);
-      })
-      .catch(error => {
-        // if we can catch this error and send it to the LoginComponent, we can have server-side validation
-        this.router.navigate(['/login']);
       });
   }
 
