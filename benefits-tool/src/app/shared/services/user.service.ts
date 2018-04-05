@@ -43,7 +43,6 @@ export class UserService {
       user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
       this.users$.push(user);
     });
-
   }
 
   // user will not be able to update their email
