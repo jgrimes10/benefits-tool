@@ -217,6 +217,7 @@ export class DashboardComponent implements OnInit {
         width: 700,
         x: function(d) { return d.key; },
         y: function(d) { return d.y; },
+        valueFormat: d3.format('$,.0f'),
         showLabels: true,
         duration: 500,
         labelThreshold: 0.01,
@@ -242,7 +243,14 @@ export class DashboardComponent implements OnInit {
         y: function(d) { return d.value; },
         showControls: false,
         showValues: true,
+        valueFormat: d3.format('$,.0f'),
         duration: 500,
+        tooltips: true,
+        tooltip: {
+          contentGenerator: function(e, elem) {
+            return '<p>' + e.data.key + ': ' + e.data.label + ' - ' + d3.format('$,')(e.data.value) + '</p>';
+          }
+        },
         xAxis: {
           showMaxMin: false
         },
