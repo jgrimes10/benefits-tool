@@ -57,6 +57,6 @@ export class CreateUserComponent implements OnInit {
     } else {
       this.userService.updateUser(this.user);
     }
-    this.dialogRef.close();
+    this.dialogRef.close(this.user);
   }
 }

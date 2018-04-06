@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from '../shared/services/user.service';
@@ -19,7 +19,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -33,6 +34,16 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       width: '40%'
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar();
+      }
+    });
+  }
+
+  openSnackBar() {
+    this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
   }
 
   openUpdateUserModal(user) {
