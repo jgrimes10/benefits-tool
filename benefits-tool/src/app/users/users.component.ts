@@ -102,4 +102,10 @@ export class UsersComponent implements OnInit {
     this.showUpload = false;
     this.showImport = true;
   }
+
+  showGraph() {
+    const dialogRef = this.dialog.open(DashboardComponent, {
+      width: '40%'
+    });
+  }
 }

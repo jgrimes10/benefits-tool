@@ -5,6 +5,7 @@ import { CustomMaterialModule } from '../shared/custom-material-module.module';
 import { UsersComponent } from './users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UsersRoutingModule } from './users-routing.module';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @NgModule({
   imports: [

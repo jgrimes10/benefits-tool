@@ -23,11 +23,13 @@ import 'd3';
 import 'nvd3';
 import { ReliasBenefitsComponent } from './relias-benefits/relias-benefits.component';
 import { XlsxService } from './shared/services/xlsx.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    ReliasBenefitsComponent,
+    ReliasBenefitsComponent
   ],
   imports: [
     BrowserModule,

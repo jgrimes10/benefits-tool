@@ -16,7 +16,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
     FormsModule
   ],
   declarations: [
-      DashboardComponent
+    DashboardComponent
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} }
