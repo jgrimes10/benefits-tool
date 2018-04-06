@@ -10,8 +10,8 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ReliasBenefitsComponent implements OnInit {
 
+  defaultBenefits: ReliasBenefits;
   myBenefits: ReliasBenefits;
-
   showSpinner = true;
 
   constructor(
@@ -25,17 +25,31 @@ export class ReliasBenefitsComponent implements OnInit {
 
   ngOnInit() {
     this.orgService.getReliasBenefits().subscribe(benefits => {
+      this.defaultBenefits = new ReliasBenefits(benefits._401k, benefits.bonus, benefits.dental,
+        benefits.HSA, benefits.medical, benefits.pto, benefits.tuition, benefits.vision);
       this.myBenefits = benefits;
       this.showSpinner = false;
     });
   }
 
-  openSnackBar() {
-    this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
+  openSnackBarForSave() {
+    this.snackbar.open('Saved!', '', { duration: 3000, horizontalPosition: 'center' });
+  }
+
+  openSnackBarForReset() {
+    this.snackbar.open('Reset to Relias defaults!', '', { duration: 3000, horizontalPosition: 'center' });
   }
 
   onSave() {
     this.orgService.updateReliasBenefits(this.myBenefits);
-    this.openSnackBar();
+    this.openSnackBarForSave();
+  }
+
+  onReset() {
+    console.log(this.defaultBenefits);
+    this.myBenefits = new ReliasBenefits(this.defaultBenefits._401k, this.defaultBenefits.bonus, this.defaultBenefits.dental,
+      this.defaultBenefits.HSA, this.defaultBenefits.medical, this.defaultBenefits.pto, this.defaultBenefits.tuition,
+      this.defaultBenefits.vision);
+    this.openSnackBarForReset();
   }
 }
