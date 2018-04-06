@@ -13,7 +13,8 @@ import {
   MatListModule,
   MatProgressSpinnerModule,
   MatExpansionModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -33,7 +34,8 @@ import { NgModule } from '@angular/core';
     MatListModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatButtonModule,
@@ -50,7 +52,8 @@ import { NgModule } from '@angular/core';
     MatListModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule
   ]
 })
 export class CustomMaterialModule { }
