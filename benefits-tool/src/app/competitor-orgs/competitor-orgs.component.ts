@@ -18,6 +18,7 @@ export class CompetitorOrgsComponent implements OnInit {
   dataSource: MatTableDataSource<CompetitorOrganization>;
   orgs: CompetitorOrganization[];
   showUpload = false;
+  showImport = true;
   fileSelected: File;
 
   constructor(
@@ -47,6 +48,7 @@ export class CompetitorOrgsComponent implements OnInit {
   }
 
   onChange(event) {
+    this.showImport = false;
     this.showUpload = true;
     this.fileSelected = event.target.files[0];
   }
