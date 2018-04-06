@@ -1,8 +1,20 @@
 <h1 class="text-center">Relias Employees</h1>
-<button (click)="openCreateUserModal()" mat-raised-button class="new-user-button" color="primary">
-  <mat-icon>add</mat-icon>
-  New Employee
-</button>
+<div>
+  <button (click)="openCreateUserModal()" mat-raised-button class="new-user-button" color="primary">
+    <mat-icon>add</mat-icon>
+    New Employee
+  </button>
+  <input class="d-none ml-3" (change)="onChange($event)" id="input-file-id" multiple type="file" />
+  <label *ngIf="showImport" for="input-file-id" class="import-btn mat-raised-button ml-3">Import Relias Employees</label>
+  <!-- <input class="upload-btn d-block mb-3" type="file" (change)="onChange($event)" /> -->
+  <button mat-raised-button class="upload-btn button ml-3" *ngIf="showUpload" (click)="upload()">
+    Upload
+  </button>
+  <span class="ml-2" *ngIf="showUpload">{{ fileName }}</span>
+  <button mat-raised-button class="button ml-3" *ngIf="showUpload" (click)="cancel()">
+    Cancel
+  </button>
+</div>
 
 <div class="table-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">

@@ -80,7 +80,7 @@ export class CompetitorOrgsComponent implements OnInit {
   }
 
   upload() {
-    this.xlsxService.uploadFile(this.fileSelected);
+    this.xlsxService.uploadMarketResearchFile(this.fileSelected);
     this.showUpload = false;
     this.showImport = true;
   }
