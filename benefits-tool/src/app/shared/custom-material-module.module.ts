@@ -14,7 +14,8 @@ import {
   MatProgressSpinnerModule,
   MatExpansionModule,
   MatSnackBarModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -36,6 +37,7 @@ import { NgModule } from '@angular/core';
     MatExpansionModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     MatButtonModule,
@@ -53,7 +55,8 @@ import { NgModule } from '@angular/core';
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class CustomMaterialModule { }

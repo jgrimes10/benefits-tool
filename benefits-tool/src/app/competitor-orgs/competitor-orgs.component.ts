@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator, MatSnackBar, MatSort } from '@angular/material';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
 import { CreateOrgComponent } from './create-org/create-org.component';
@@ -25,6 +25,7 @@ export class CompetitorOrgsComponent implements OnInit {
   fileName: string;
   orgCount: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public dialog: MatDialog,
@@ -75,6 +76,7 @@ export class CompetitorOrgsComponent implements OnInit {
       this.orgCount = this.orgs.length;
       this.paginator.pageSize = 10;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 

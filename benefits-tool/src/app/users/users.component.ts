@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator, MatSort } from '@angular/material';
 
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from '../shared/services/user.service';
@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
   fileName: string;
   userCount: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private userService: UserService,
@@ -37,6 +38,7 @@ export class UsersComponent implements OnInit {
       this.userCount = users.length;
       this.paginator.pageSize = 10;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
