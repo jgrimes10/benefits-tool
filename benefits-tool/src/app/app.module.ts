@@ -17,6 +17,7 @@ import { AuthService } from '../app/shared/services/auth.service';
 import { AuthGuard } from '../app/shared/guards/auth.guard';
 import { UserService } from '../app/shared/services/user.service';
 import { OrganizationService } from '../app/shared/services/organization.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 import 'd3';
 import 'nvd3';
@@ -39,7 +40,8 @@ import { XlsxService } from './shared/services/xlsx.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    DashboardModule
   ],
   providers: [
     AuthService,

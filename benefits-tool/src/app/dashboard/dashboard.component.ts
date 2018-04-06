@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { NvD3Component } from 'ng2-nvd3';
 import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   competitorOrgs: CompetitorOrganization[];
   dataSource: MatTableDataSource<User>;
 
-  constructor(private orgService: OrganizationService, private authService: AuthService) {
+  constructor(private orgService: OrganizationService, private authService: AuthService, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.barData = new Array();
   }
 

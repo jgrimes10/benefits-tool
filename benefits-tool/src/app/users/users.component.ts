@@ -5,6 +5,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user.model';
 import { XlsxService } from '../shared/services/xlsx.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-users',
@@ -28,7 +29,7 @@ export class UsersComponent implements OnInit {
     private userService: UserService,
     public dialog: MatDialog,
     private snackbar: MatSnackBar,
-    private xlsxService: XlsxService
+    private xlsxService: XlsxService,
   ) { }
 
   ngOnInit() {
@@ -74,6 +75,13 @@ export class UsersComponent implements OnInit {
       if (result) {
         this.openSnackBar();
       }
+    });
+  }
+
+  openDashboardModal(user) {
+    const dialogRef = this.dialog.open(DashboardComponent, {
+      data: user,
+      width: '40%'
     });
   }
 
