@@ -62,6 +62,12 @@ export class CompetitorOrgsComponent implements OnInit {
     });
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   loadData() {
     this.orgService.getCompetitorOrganizations().subscribe(orgs => {
       this.orgs = orgs;
