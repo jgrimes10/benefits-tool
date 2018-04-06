@@ -85,8 +85,12 @@ export class CompetitorOrgsComponent implements OnInit {
     this.showImport = true;
   }
 
+  cancel() {
+    this.showUpload = false;
+    this.showImport = true;
+  }
+
   openSnackBar() {
     this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
   }
-
 }
