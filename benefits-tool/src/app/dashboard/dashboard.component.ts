@@ -148,11 +148,14 @@ export class DashboardComponent implements OnInit {
       }
     };
 
+    const innerHeight = (window.screen.height) * .75;
+    const innerWidth = (window.screen.width) * .75;
+
     this.barOptions = {
       chart: {
         type: 'multiBarHorizontalChart',
-        height: 420,
-        width: 800,
+        height: innerHeight,
+        width: innerWidth,
         margin: {'left': 75},
         x: function(d) { return d.label; },
         y: function(d) { return d.value; },
