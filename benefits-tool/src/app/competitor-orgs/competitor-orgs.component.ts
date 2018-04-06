@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator } from '@angular/material';
+import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { OrganizationService } from '../shared/services/organization.service';
 import { CompetitorOrganization } from '../shared/models/organization.model';
 import { XlsxService } from '../shared/services/xlsx.service';
 import * as XLSX from 'xlsx';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-competitor-orgs',
@@ -21,6 +23,8 @@ export class CompetitorOrgsComponent implements OnInit {
   showImport = true;
   fileSelected: File;
   fileName: string;
+  orgCount: number;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -29,10 +33,7 @@ export class CompetitorOrgsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.orgService.getCompetitorOrganizations().subscribe(orgs => {
-      this.orgs = orgs;
-      this.dataSource = new MatTableDataSource<CompetitorOrganization>(orgs);
-    });
+    this.loadData();
   }
 
   openCreateNewOrgModal() {
@@ -46,6 +47,16 @@ export class CompetitorOrgsComponent implements OnInit {
       data: org,
       width: '40%'
     });
+  }
+
+  loadData() {
+    this.orgService.getCompetitorOrganizations().subscribe(orgs => {
+      this.orgs = orgs;
+      this.dataSource = new MatTableDataSource<CompetitorOrganization>(orgs);
+      this.orgCount = this.orgs.length;
+      this.dataSource.paginator = this.paginator;
+    });
+    console.log(this.orgCount);
   }
 
   onChange(event) {
