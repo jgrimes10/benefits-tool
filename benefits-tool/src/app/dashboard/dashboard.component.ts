@@ -22,11 +22,12 @@ declare let d3: any;
 export class DashboardComponent implements OnInit {
   @ViewChild('nvd3') nvd3;
   compareBenefits = false;
+  user: User;
+  selectedOrg;
   pieOptions: Object;
   barOptions: Object;
   pieData: Array<any> = [];
   barData: Array<SeriesModel>;
-  user: User;
   competitorOrgs: CompetitorOrganization[];
   dataSource: MatTableDataSource<User>;
 
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = user[0];
+      const currentUserPosition = this.user.position;
 
       this.pieData = [
         {
@@ -76,138 +78,55 @@ export class DashboardComponent implements OnInit {
           y: this.user !== undefined ? this.user.tuition : 4000
         }
       ];
-    });
-    this.orgService.getCompetitorOrganizations().subscribe(orgs => {
-      this.competitorOrgs = orgs;
 
-      this.barData = [
-        {
-          'key': 'Relias',
-          'color': '#00a7a6',
-          'values': [
-            {
-              'label': 'Salary',
-              'value': this.user !== undefined ? this.user.salary : 100000
-            },
-            {
-              'label': 'Bonus',
-              'value': this.user !== undefined ? this.user.bonus : 10000
-            },
-            {
-              'label': '401k',
-              'value': this.user !== undefined ? this.user._401k : 6000
-            },
-            {
-              'label': 'Medical',
-              'value': this.user !== undefined ? this.user.medical : 474.24
-            },
-            {
-              'label': 'Dental',
-              'value': this.user !== undefined ? this.user.dental : 125
-            },
-            {
-              'label': 'Vision',
-              'value': this.user !== undefined ? this.user.vision : 125
-            },
-            {
-              'label': 'HSA',
-              'value': this.user !== undefined ? this.user.hsa : 500
-            },
-            {
-              'label': 'PTO',
-              'value': this.user !== undefined ? this.user.tuition : 7000
-            },
-            {
-              'label': 'Tuition',
-              'value': this.user !== undefined ? this.user.tuition : 4000
-            }
-          ]
-        },
-        {
-          'key': this.competitorOrgs !== undefined ? this.competitorOrgs[0].name : 'Competitor #2',
-          'color': '#f1ac00',
-          'values': [
-            {
-              'label': 'Salary',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgSalary : 90000
-            },
-            {
-              'label': 'Bonus',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgBonus : 7500
-            },
-            {
-              'label': '401k',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avg401k : 4200
-            },
-            {
-              'label': 'Medical',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgMedical : 400
-            },
-            {
-              'label': 'Dental',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgDental : 75
-            },
-            {
-              'label': 'Vision',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgVision : 0
-            },
-            {
-              'label': 'HSA',
-              'value': 500
-            },
-            {
-              'label': 'PTO',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgPTO : 3200
-            },
-            {
-              'label': 'Tuition',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[0].avgTuition : 0
-            }
-          ]
-        },
-        {
-          'key': this.competitorOrgs !== undefined ? this.competitorOrgs[1].name : 'Competitor #3',
-          'color': '#166dab',
-          'values': [
-            {
-              'label': 'Salary',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgSalary : 92000
-            },
-            {
-              'label': 'Bonus',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgBonus : 5000
-            },
-            {
-              'label': '401k',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avg401k : 2000
-            },
-            {
-              'label': 'Medical',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgMedical : 600
-            },
-            {
-              'label': 'Dental',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgDental : 0
-            },
-            {
-              'label': 'Vision',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgVision : 100
-            },
-            {
-              'label': 'HSA',
-              'value': 1000
-            },
-            {
-              'label': 'PTO',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgPTO : 4000
-            },
-            {
-              'label': 'Tuition',
-              'value': this.competitorOrgs !== undefined ? this.competitorOrgs[1].avgTuition : 0
-            }
-          ]
-        }
-      ];
+      this.orgService.getCompetitorOrganizationsByPosition(currentUserPosition).subscribe(orgs => {
+        this.competitorOrgs = orgs;
+
+        this.barData = [
+          {
+            'key': 'Relias',
+            'color': '#00a7a6',
+            'values': [
+              {
+                'label': 'Salary',
+                'value': this.user !== undefined ? this.user.salary : 100000
+              },
+              {
+                'label': 'Bonus',
+                'value': this.user !== undefined ? this.user.bonus : 10000
+              },
+              {
+                'label': '401k',
+                'value': this.user !== undefined ? this.user._401k : 6000
+              },
+              {
+                'label': 'Medical',
+                'value': this.user !== undefined ? this.user.medical : 474.24
+              },
+              {
+                'label': 'Dental',
+                'value': this.user !== undefined ? this.user.dental : 125
+              },
+              {
+                'label': 'Vision',
+                'value': this.user !== undefined ? this.user.vision : 125
+              },
+              {
+                'label': 'HSA',
+                'value': this.user !== undefined ? this.user.hsa : 500
+              },
+              {
+                'label': 'PTO',
+                'value': this.user !== undefined ? this.user.tuition : 7000
+              },
+              {
+                'label': 'Tuition',
+                'value': this.user !== undefined ? this.user.tuition : 4000
+              }
+            ]
+          }
+        ];
+      });
     });
 
     this.pieOptions = {
@@ -262,6 +181,55 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+  }
+
+  filterChanged(value) {
+    this.barData.splice(1, 2);
+    this.barData.push({
+      key: value.name,
+      color: '#f1ac00',
+      values: [
+        {
+          'label': 'Salary',
+          'value': value.avgSalary
+        },
+        {
+          'label': 'Bonus',
+          'value': (value.avgBonus / 100) * value.avgSalary
+        },
+        {
+          'label': '401k',
+          'value': (value.avg401k / 100) * value.avgSalary
+        },
+        {
+          'label': 'Medical',
+          'value': value.avgMedical
+        },
+        {
+          'label': 'Dental',
+          'value': value.avgDental
+        },
+        {
+          'label': 'Vision',
+          'value': value.avgVision
+        },
+        {
+          'label': 'HSA',
+          'value': value.hsa !== undefined ? value.hsa : 0 // we don't have an HSA for other orgs
+        },
+        {
+          'label': 'PTO',
+          'value': (value.avgPTO / 100) * value.avgSalary
+        },
+        {
+          'label': 'Tuition',
+          'value': value.avgTuition
+        }
+      ]
+    });
+
+    console.log(this.barData);
+    this.nvd3.chart.update();
   }
 
   pieView(): void {

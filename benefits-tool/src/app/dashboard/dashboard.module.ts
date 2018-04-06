@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NvD3Module, NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -10,7 +11,8 @@ import 'nvd3';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NvD3Module
+    NvD3Module,
+    FormsModule
   ],
   declarations: [
       DashboardComponent
