@@ -30,12 +30,17 @@ export class DashboardComponent implements OnInit {
   barData: Array<SeriesModel>;
   competitorOrgs: CompetitorOrganization[];
   dataSource: MatTableDataSource<User>;
+  your = 'Your';
 
   constructor(private orgService: OrganizationService, private authService: AuthService, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.barData = new Array();
   }
 
   ngOnInit() {
+    if (Object.keys(this.data).length !== 0) {
+      this.your = `${this.data.firstName}'s`;
+    }
+
     this.authService.getCurrentUser().subscribe(user => {
       this.user = (Object.keys(this.data).length === 0) ? user[0] : this.data;
       const currentUserPosition = this.user.position;
