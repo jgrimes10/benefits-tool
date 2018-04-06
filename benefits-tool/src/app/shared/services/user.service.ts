@@ -44,7 +44,7 @@ export class UserService {
       user.pto = Number((user.salary * (benefits.pto / 100)).toFixed(2));
       user.vision = benefits.vision;
       this.users$.push(user);
-      this.afAuth.auth.createUserWithEmailAndPassword(user.email, 'training');
+      // this.afAuth.auth.createUserWithEmailAndPassword(user.email, 'training');
     });
   }
 
