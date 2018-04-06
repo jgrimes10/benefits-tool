@@ -55,5 +55,7 @@ export class CompetitorOrgsComponent implements OnInit {
 
   upload() {
     this.xlsxService.uploadFile(this.fileSelected);
+    this.showUpload = false;
+    this.showImport = true;
   }
 }
