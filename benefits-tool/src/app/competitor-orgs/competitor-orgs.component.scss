@@ -1,12 +1,17 @@
 .button {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .mat-column-edit {
-    flex: 0 0 40px;
+  flex: 0 0 40px;
 }
 
 .upload-btn {
-    background: #d5d5d5;
-    font-size: 14px;
+  background: #d5d5d5;
+  font-size: 14px;
+}
+
+.filter {
+  padding: 10px 24px 0;
+  width: 40%;
 }
