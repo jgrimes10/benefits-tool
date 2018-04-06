@@ -67,6 +67,7 @@ export class CompetitorOrgsComponent implements OnInit {
       this.orgs = orgs;
       this.dataSource = new MatTableDataSource<CompetitorOrganization>(orgs);
       this.orgCount = this.orgs.length;
+      this.paginator.pageSize = 10;
       this.dataSource.paginator = this.paginator;
     });
   }
