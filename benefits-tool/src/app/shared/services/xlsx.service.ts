@@ -4,6 +4,7 @@ import * as XLSX from 'xlsx';
 import { OrganizationService } from './organization.service';
 import { UserService } from './user.service';
 import { CompetitorOrganization } from '../models/organization.model';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class XlsxService {
@@ -47,11 +48,9 @@ export class XlsxService {
         if (idx === 0) {
           return;
         }
-        console.log(row);
-        // const orgObj = new CompetitorOrganization(row[0].trim(), row[1].trim(), Number(row[2].trim()), Number(row[3].trim()),
-        //   Number(row[5].trim()), Number(row[9].trim()), Number(row[10].trim()), Number(row[11].trim()), Number(row[6].trim()),
-        //   Number(row[8].trim()));
-        // this.orgService.insertCompetitorOrganization(orgObj);
+        const userObj = new User(row[0].trim(), row[1].trim(), row[2].trim(), row[3].trim(), row[4].trim(),
+          row[5].trim(), Number(row[6].trim()), row[7].trim());
+        this.userService.createUser(userObj);
       });
     };
     reader.readAsBinaryString(file);
