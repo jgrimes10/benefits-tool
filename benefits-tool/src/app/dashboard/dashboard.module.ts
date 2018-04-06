@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import 'd3';
 import 'nvd3';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import 'nvd3';
   ],
   declarations: [
       DashboardComponent
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} }
   ]
 })
 export class DashboardModule { }
