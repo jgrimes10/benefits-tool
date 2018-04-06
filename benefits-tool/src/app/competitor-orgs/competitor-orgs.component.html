@@ -1,19 +1,28 @@
 <h1 class="text-center">Market Research</h1>
 <div>
-  <button mat-raised-button color="primary" class="button" (click)="openCreateNewOrgModal()">
+  <button *ngIf="!showUpload" mat-raised-button color="primary" class="button" (click)="openCreateNewOrgModal()">
     <mat-icon>add</mat-icon>
     New Entry
   </button>
   <input class="d-none ml-3" (change)="onChange($event)" id="input-file-id" multiple type="file" />
-  <label *ngIf="showImport" for="input-file-id" class="import-btn mat-raised-button ml-3">Import Data</label>
+  <label *ngIf="showImport" for="input-file-id" class="import-btn mat-raised-button ml-3">Import Market Data</label>
   <!-- <input class="upload-btn d-block mb-3" type="file" (change)="onChange($event)" /> -->
-  <button mat-raised-button class="upload-btn button ml-3" *ngIf="showUpload" (click)="upload()">
+  <button mat-raised-button color="primary" class="upload-btn button" *ngIf="showUpload" (click)="upload()">
     Upload
   </button>
   <span class="ml-2" *ngIf="showUpload">{{ fileName }}</span>
+  <button mat-raised-button class="button ml-3" *ngIf="showUpload" (click)="cancel()">
+    Cancel
+  </button>
 </div>
 
 <div class="table-container mat-elevation-z8">
+  <mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    <span matSuffix>
+        <mat-icon>search</mat-icon>
+    </span>
+  </mat-form-field>
   <mat-table #table [dataSource]="dataSource" matSort>
     <!-- Org Name Column -->
     <ng-container matColumnDef="orgName">

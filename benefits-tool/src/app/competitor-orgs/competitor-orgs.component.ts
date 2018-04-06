@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator, MatSnackBar, MatSort } from '@angular/material';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/do';
   templateUrl: './competitor-orgs.component.html',
   styleUrls: ['./competitor-orgs.component.scss']
 })
-export class CompetitorOrgsComponent implements OnInit, AfterViewInit {
+export class CompetitorOrgsComponent implements OnInit {
 
   displayedColumns = ['orgName', 'compPosition', 'avgSalary', 'avgBonus', 'avgMedical', 'edit'];
   dataSource: MatTableDataSource<CompetitorOrganization>;
@@ -63,6 +63,12 @@ export class CompetitorOrgsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   loadData() {
     this.orgService.getCompetitorOrganizations().subscribe(orgs => {
       this.orgs = orgs;
@@ -87,8 +93,12 @@ export class CompetitorOrgsComponent implements OnInit, AfterViewInit {
     this.showImport = true;
   }
 
+  cancel() {
+    this.showUpload = false;
+    this.showImport = true;
+  }
+
   openSnackBar() {
     this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
   }
-
 }

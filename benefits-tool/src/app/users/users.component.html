@@ -5,28 +5,34 @@
 </button>
 
 <div class="table-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+  <mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    <span matSuffix>
+        <mat-icon>search</mat-icon>
+    </span>
+  </mat-form-field>
+  <mat-table #table [dataSource]="dataSource" matSort>
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
     </ng-container>
 
     <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef>Position</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.position}} </mat-cell>
     </ng-container>
 
