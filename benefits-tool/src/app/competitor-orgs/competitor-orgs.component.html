@@ -3,9 +3,9 @@
     <mat-icon>add</mat-icon>
     New Entry
   </button>
-  <button mat-raised-button color="primary" class="button">
-    <input type="file" (change)="onChange($event)" />
-  </button>
+  <input class="d-none ml-3" (change)="onChange($event)" id="input-file-id" multiple type="file" />
+  <label for="input-file-id" class="import-btn mat-raised-button ml-3">Import Data</label>
+  <!-- <input class="upload-btn d-block mb-3" type="file" (change)="onChange($event)" /> -->
   <button mat-raised-button color="primary" class="button" *ngIf="showUpload" (click)="upload()">
     Upload
   </button>
