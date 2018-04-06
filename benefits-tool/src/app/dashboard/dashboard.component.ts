@@ -37,11 +37,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (Object.keys(this.data).length !== 0) {
-      this.your = `${this.data.firstName}'s`;
-    }
-
     this.authService.getCurrentUser().subscribe(user => {
+      if (Object.keys(this.data).length !== 0 && this.data.$key !== user[0].$key) {
+        this.your = `${this.data.firstName}'s`;
+      }
       this.user = (Object.keys(this.data).length === 0) ? user[0] : this.data;
       const currentUserPosition = this.user.position;
 
