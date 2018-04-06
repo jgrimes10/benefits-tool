@@ -51,5 +51,11 @@ export class UsersComponent implements OnInit {
       data: user,
       width: '40%'
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar();
+      }
+    });
   }
 }

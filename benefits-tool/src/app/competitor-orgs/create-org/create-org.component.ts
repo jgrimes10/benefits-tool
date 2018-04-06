@@ -63,7 +63,7 @@ export class CreateOrgComponent implements OnInit {
     } else {
       this.orgService.updateCompetitorOrganization(this.competitor);
     }
-    this.diaglogRef.close();
+    this.diaglogRef.close(this.competitor);
   }
 
   onCancel() {

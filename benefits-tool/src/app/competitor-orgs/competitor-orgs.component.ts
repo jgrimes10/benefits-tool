@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatTableDataSource, MatPaginator, MatSnackBar } from '@angular/material';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
 import { CreateOrgComponent } from './create-org/create-org.component';
@@ -29,7 +29,8 @@ export class CompetitorOrgsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private orgService: OrganizationService,
-    private xlsxService: XlsxService
+    private xlsxService: XlsxService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -40,12 +41,24 @@ export class CompetitorOrgsComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateOrgComponent, {
       width: '40%'
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar();
+      }
+    });
   }
 
   openUpdateOrgModal(org) {
     const dialogRef = this.dialog.open(CreateOrgComponent, {
       data: org,
       width: '40%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar();
+      }
     });
   }
 
@@ -56,7 +69,6 @@ export class CompetitorOrgsComponent implements OnInit {
       this.orgCount = this.orgs.length;
       this.dataSource.paginator = this.paginator;
     });
-    console.log(this.orgCount);
   }
 
   onChange(event) {
@@ -71,4 +83,9 @@ export class CompetitorOrgsComponent implements OnInit {
     this.showUpload = false;
     this.showImport = true;
   }
+
+  openSnackBar() {
+    this.snackbar.open('Saved!', '', {duration: 3000, horizontalPosition: 'center'});
+  }
+
 }
