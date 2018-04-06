@@ -49,11 +49,14 @@
     </ng-container>
 
     <!-- Edit Button -->
-    <ng-container matColumnDef="edit">
+    <ng-container class="d-flex justify-content-end" matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let user">
         <button (click)="openUpdateUserModal(user)" mat-icon-button>
             <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>insert_chart</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
