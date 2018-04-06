@@ -48,7 +48,10 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="d-flex justify-content-end btn-container">
+  <div class="d-flex justify-content-end btn-container" mat-dialog-actions>
+    <button mat-raised-button (click)="dialogRef.close()">
+      Cancel
+    </button>
     <button mat-raised-button color="primary" (click)="createUser();">
       <span *ngIf="!user?.$key">Create</span>
       <span *ngIf="user?.$key">Update</span>
