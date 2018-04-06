@@ -112,10 +112,6 @@ export class DashboardComponent implements OnInit {
                 'value': this.user !== undefined ? this.user.vision : 125
               },
               {
-                'label': 'HSA',
-                'value': this.user !== undefined ? this.user.hsa : 500
-              },
-              {
                 'label': 'PTO',
                 'value': this.user !== undefined ? this.user.tuition : 7000
               },
@@ -155,8 +151,8 @@ export class DashboardComponent implements OnInit {
     this.barOptions = {
       chart: {
         type: 'multiBarHorizontalChart',
-        height: 800,
-        width: 1000,
+        height: 420,
+        width: 800,
         margin: {'left': 75},
         x: function(d) { return d.label; },
         y: function(d) { return d.value; },
@@ -214,10 +210,6 @@ export class DashboardComponent implements OnInit {
           'value': value.avgVision
         },
         {
-          'label': 'HSA',
-          'value': value.hsa !== undefined ? value.hsa : 0 // we don't have an HSA for other orgs
-        },
-        {
           'label': 'PTO',
           'value': (value.avgPTO / 100) * value.avgSalary
         },
@@ -228,7 +220,6 @@ export class DashboardComponent implements OnInit {
       ]
     });
 
-    console.log(this.barData);
     this.nvd3.chart.update();
   }
 
