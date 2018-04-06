@@ -20,6 +20,7 @@ export class CompetitorOrgsComponent implements OnInit {
   showUpload = false;
   showImport = true;
   fileSelected: File;
+  fileName: string;
 
   constructor(
     public dialog: MatDialog,
@@ -51,6 +52,7 @@ export class CompetitorOrgsComponent implements OnInit {
     this.showImport = false;
     this.showUpload = true;
     this.fileSelected = event.target.files[0];
+    this.fileName = this.fileSelected.name;
   }
 
   upload() {
