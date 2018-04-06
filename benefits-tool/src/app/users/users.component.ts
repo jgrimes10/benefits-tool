@@ -4,6 +4,7 @@ import { MatTableDataSource, MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatSnackB
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user.model';
+import { XlsxService } from '../shared/services/xlsx.service';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +16,10 @@ export class UsersComponent implements OnInit {
   displayedColumns = ['firstName', 'lastName', 'email', 'position', 'edit'];
   dataSource: MatTableDataSource<User>;
   users: User[];
+  showUpload = false;
+  showImport = true;
+  fileSelected: File;
+  fileName: string;
   userCount: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -22,7 +27,8 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private xlsxService: XlsxService
   ) { }
 
   ngOnInit() {
@@ -69,5 +75,23 @@ export class UsersComponent implements OnInit {
         this.openSnackBar();
       }
     });
+  }
+
+  onChange(event) {
+    this.showImport = false;
+    this.showUpload = true;
+    this.fileSelected = event.target.files[0];
+    this.fileName = this.fileSelected.name;
+  }
+
+  upload() {
+    this.xlsxService.uploadReliasEmployeesFile(this.fileSelected);
+    this.showUpload = false;
+    this.showImport = true;
+  }
+
+  cancel() {
+    this.showUpload = false;
+    this.showImport = true;
   }
 }
