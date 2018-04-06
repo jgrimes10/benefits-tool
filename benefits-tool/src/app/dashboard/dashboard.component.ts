@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(user => {
-      this.user = user[0];
+      this.user = (Object.keys(this.data).length === 0) ? user[0] : this.data;
       const currentUserPosition = this.user.position;
 
       this.pieData = [
