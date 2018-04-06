@@ -148,7 +148,7 @@ export class DashboardComponent implements OnInit {
       }
     };
 
-    const innerHeight = (window.screen.height) * .75;
+    const innerHeight = (window.screen.height) * .6;
     const innerWidth = (window.screen.width) * .75;
 
     this.barOptions = {
