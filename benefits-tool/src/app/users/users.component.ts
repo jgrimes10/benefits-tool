@@ -81,7 +81,7 @@ export class UsersComponent implements OnInit {
   openDashboardModal(user) {
     const dialogRef = this.dialog.open(DashboardComponent, {
       data: user,
-      width: '40%'
+      width: '80%'
     });
   }
 
