@@ -4,10 +4,10 @@
   <button mat-raised-button [ngClass]="{'chart-selected': compareBenefits}" type="button" class="btn btn-sm btn-switch button-primary button" id="Compare" (click)="compareView($event)" i18n>Compare</button>
 </div>
 <div class="graph-container">
-  <div *ngIf="!compareBenefits">
+  <div class="pie-container mt-4" *ngIf="!compareBenefits">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 pl-0">
           <div class='benefits-grid'>
             <div class="row justify-content-md-center">
               <div class="col-md-4 header">
